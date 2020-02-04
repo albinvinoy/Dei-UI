@@ -1,0 +1,70 @@
+
+Total max number of participants in the stage per Group - 10
+What are all the stop time seconds for the program - 60, 30, 10
+Are all the tv going to be the same size - 
+
+Option for english and malayalam. 
+Adult would have the option 
+    - Both the language would be in split screen only for adults.
+==================================================================
+Regular Round - 
+
+How are the questions formatted? - 
+Are the questions and answers shows all at once? - 
+    - First show the question and no options
+Is there just a question and then 4 answers?
+    - there are no options
+Does it show up on the screen until the question changes.
+    - there are no options at any points
+    - when someone answers and or if no one answers then we should should all the question and answers
+
+    Two questions per participant
+    If first person cannot answer the question, then move on
+    Original quesiton gets 30 seconds
+    Pass question gets 10 seconds
+        - Each pass resets the time to 10s.
+    Question can be passed on to multiple teams
+
+
+    -- display question first
+    -- once answered or no answer then display all questions
+    -- master has a preface
+
+ ==================================================================   
+
+Bible Verse / Quotes - 
+
+Are all the questions and answers shown all at once?
+    - Display only the questions toe the partiticiapand and promto thte quiz master
+    - If the part does not answer the qeustion then we display teh qeustion and anser
+
+What are the rules for passing the questions?
+Are all answers displayed all at once?
+Does the time change when passed? No passing
+
+==================================================================
+
+Picture Round  - Just pictures no video or audio
+
+    - First we display picture alone
+    - Quiz master explan context (try and prompt it)
+    - There will be two qeustion on that picture
+    - They can skip each of the questions
+    - When the time expires for the first question, then we display the answer fo the questions. 
+
+Will the picture be displayed first?
+Does the image stay on the screen when the question is displayed?
+Does it also show the answers?
+Does the questions pass? No passing
+Does the time change when questions are passed?
+
+==================================================================
+
+Rapid Round -  No screen
+
+How are the questions formatted?
+What is shown on the screen?
+
+==================================================================
+
+Tie Breaker Round - Bible Verse/Quotes

@@ -1,0 +1,12 @@
+/* button{
+    align-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+} */
+
+#clock{
+    text-align: center;
+}
+.container{
+    justify-content: start;
+}
