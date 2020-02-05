@@ -4,14 +4,9 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Timer from '../Timer';
-
-
 import '../../styles/RegularRoundMaster.css'
 import AnswerCard from '../AnswerCard';
 
-// let TimerComponent = ({seconds}) => (
-// <Timer roundTime={seconds} />
-// ) 
 
 let TimerComponent = ({seconds}) => (
      new Timer(seconds)
@@ -22,14 +17,16 @@ class RegularRoundMaster extends Component {
         super(props)
 
         this.state = {
-            timer: 30
+            timer: 30,
+            localStore :  1
         }
+        
         this.nextTimer = this.nextTimer.bind(this);
         this.newQuestion = this.newQuestion.bind(this);
     }
 
     nextTimer() {
-        TimerComponent.stopTimer();
+        clearInterval(TimerComponent)
         this.setState({
             timer : 10,
             answer : this.props.answer
@@ -37,7 +34,7 @@ class RegularRoundMaster extends Component {
     }
 
     newQuestion() {
-
+        localStorage.setItem("answer", 1)
     }
 
     render() {
