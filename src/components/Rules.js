@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-
-
 class Rules extends Component {
 
     constructor(props) {

@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col'
 import Timer from '../Timer';
 import '../../styles/RegularRoundMaster.css'
 import AnswerCard from '../AnswerCard';
-
+import {useEffect, useState} from 'react'
 
 let TimerComponent = ({seconds}) => (
      new Timer(seconds)
@@ -22,19 +22,32 @@ class RegularRoundMaster extends Component {
         }
         
         this.nextTimer = this.nextTimer.bind(this);
-        this.newQuestion = this.newQuestion.bind(this);
+        this.displayAnswer = this.displayAnswer.bind(this);
+        this.nextQuestion = this.nextQuestion.bind(this);
     }
 
     nextTimer() {
         clearInterval(TimerComponent)
         this.setState({
             timer : 10,
-            answer : this.props.answer
+            answer : this.props.answer,
+            answerBulk : {}
         })
     }
 
-    newQuestion() {
+    displayAnswer() {
         localStorage.setItem("answer", 1)
+       
+            fetch("http://localhost:5000/api/regularRound/2")
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                
+            })
+        }
+
+    nextQuestion(){
+
     }
 
     render() {
@@ -78,9 +91,11 @@ class RegularRoundMaster extends Component {
                 <Timer seconds={this.state.timer} />
                 {viewController()}
                 <Container>
+                    <br />
                     <Row>
-                        <button class="rounded-pill btn-warning" onClick={this.nextTimer}>Skip</button>
-                        <button class="rounded-pill btn-success" onClick={this.newQuestion}>View Answer</button>
+                        <button className="rounded-pill btn-warning" onClick={this.nextTimer}>Skip</button>
+                        <button className="rounded-pill btn-danger" onClick={this.displayAnswer}>View Answer</button>
+                        <button className="rounded-pill btn-success" onClick={this.nextQuestion}>Next Question</button>
                     </Row>
                 </Container>
             </div>

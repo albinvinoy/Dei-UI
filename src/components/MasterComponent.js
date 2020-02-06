@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import RegularRoundMaster from './Master/RegularRoundMaster'
 
-
 let RegularRoundComponent = (english, malayalam, multiView, answer) => {
     return (
         <RegularRoundMaster
@@ -29,7 +28,6 @@ class MasterComponent extends Component {
                 </div>
             )
         }
-        
     }
 }
 
