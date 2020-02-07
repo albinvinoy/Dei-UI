@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+import DropdownButton from 'react-bootstrap/DropdownButton'
+import Dropdown from 'react-bootstrap/Dropdown'
+import SplitButton from 'react-bootstrap/SplitButton'
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
 
 class RoundSelector extends Component {
     constructor(props) {
@@ -9,20 +13,38 @@ class RoundSelector extends Component {
         }
     }
 
+    // saveSelection(){
+    //     let storeName = "currentRound";
+    //     // let roundDetails = {"round" : "RegularRound", "group" : "adult"}
+    //     let round = localStorage.getItem(storeName);
+    //     if (round !=  null || ''){
+    //         localStorage.removeItem(storeName);
+    //     }
+    //     localStorage.setItem(storeName, JSON.stringify(roundDetails));
+    // }
+
     render() {
         return (
             <div >
-                   <div className="dropdown">
-                    <button className="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Tutorials
-    <span className="caret"></span></button>
-                    <ul className="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
-                        <li role="presentation" className="divider"></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
-                    </ul>
-                </div>
+                   <ButtonToolbar>
+    {['right'].map(direction => (
+      <DropdownButton
+        drop={direction}
+        variant="secondary"
+        title={` Drop ${direction} `}
+        id={`dropdown-button-drop-${direction}`}
+        key={direction}
+      >
+
+        <Dropdown.Item >Regular Round</Dropdown.Item>
+        <Dropdown.Item eventKey="2">Picture Round</Dropdown.Item>
+        <Dropdown.Item eventKey="3">Last Round</Dropdown.Item>
+        {/* <Dropdown.Divider />
+        <Dropdown.Item eventKey="4">Separated link</Dropdown.Item> */}
+      </DropdownButton>
+    ))}
+  </ButtonToolbar>
+
             </div>
         )
     }

@@ -18,25 +18,26 @@ class AnswerCard extends Component {
     }
 
     render() {
+        
         return (
             <div>
                 <Card>
                     <Row>
                         <Col>
                             <div id="_1">
-                                <Card.Body className="cardBody" style={{backgroundColor : this.props.answer === "_1"? "green" : "noColor"}}>{this.state._1}</Card.Body>
+                                <Card.Body className="cardBody" style={{backgroundColor : this.props.answer === 1? "green" : "noColor"}}>{this.props.one}</Card.Body>
                             </div>
                         </Col>
                         <Col><div id="_2">
-                            <Card.Body className="cardBody"  style={{backgroundColor : this.props.answer === "_2"? "green" : "noColor"}}>{this.state._2}</Card.Body>
+                            <Card.Body className="cardBody"  style={{backgroundColor : this.props.answer === 2? "green" : "noColor"}}>{this.props.two}</Card.Body>
                         </div></Col>
                     </Row>
                     <Row>
                         <Col><div id="_3" >
-                            <Card.Body className="cardBody"  style={{backgroundColor : this.props.answer === "_3"? "green" : "noColor"}}>{this.state._3}</Card.Body>
+                            <Card.Body className="cardBody"  style={{backgroundColor : this.props.answer === 3? "green" : "noColor"}}>{this.props.three}</Card.Body>
                         </div></Col>
                         <Col><div id="_4" >
-                            <Card.Body className="cardBody" style={{backgroundColor : this.props.answer === "_4"? "green" : "noColor"}}>{this.state._4}</Card.Body>
+                            <Card.Body className="cardBody" style={{backgroundColor : this.props.answer === 4? "green" : "noColor"}}>{this.props.four}</Card.Body>
                         </div></Col>
                     </Row>
                 </Card>

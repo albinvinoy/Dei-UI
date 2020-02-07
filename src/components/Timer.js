@@ -18,9 +18,9 @@ class Timer extends Component {
             variant: "success"
         }
         this.timer = 0;
-        this.setState({
-            currentSeconds : this.props.seconds
-        })
+        // this.setState({
+        //     currentSeconds : this.props.seconds
+        // })
         this.startTimer = this.startTimer.bind(this);
         this.stopTimer = this.stopTimer.bind(this);
         this.countDown = this.countDown.bind(this);
