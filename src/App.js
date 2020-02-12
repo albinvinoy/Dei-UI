@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import MasterComponent from './components/MasterComponent';
 import Rules from './components/Rules';
 import WelcomePage from './components/WelcomePage'
+import PictureRoundMaster from './components/Master/PictureRoundMaster';
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
               <Route exact path="/" component={WelcomePage} />
              <Route exact path='/master' component={MasterComponent}/>
              <Route exact path='/rules' component={Rules}/>
+             <Route exact path="/pc" component={PictureRoundMaster} />}
              {/* <Route exact path="/view" component={ViewPage} /> */}
            </Switch>
       </BrowserRouter>

@@ -13,16 +13,6 @@ class RoundSelector extends Component {
         }
     }
 
-    // saveSelection(){
-    //     let storeName = "currentRound";
-    //     // let roundDetails = {"round" : "RegularRound", "group" : "adult"}
-    //     let round = localStorage.getItem(storeName);
-    //     if (round !=  null || ''){
-    //         localStorage.removeItem(storeName);
-    //     }
-    //     localStorage.setItem(storeName, JSON.stringify(roundDetails));
-    // }
-
     render() {
         return (
             <div >

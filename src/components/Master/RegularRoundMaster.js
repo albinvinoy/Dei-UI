@@ -8,9 +8,77 @@ import '../../styles/RegularRoundMaster.css'
 import AnswerCard from '../AnswerCard';
 import { useEffect, useState } from 'react'
 
-let TimerComponent = ({ seconds }) => (
+const storeName = "currentRound";
+const TimerComponent = ({ seconds }) => (
     new Timer(seconds)
 )
+
+const getGroup = (group) => {
+    console.log("Master " + group)
+    let groupMapper = {
+        "adult": 4,
+        "sub-jr": 1,
+        "jr": 2,
+        "sr": 3
+    }
+    return groupMapper[group];
+}
+
+var singleViewComponent = (currentQuestionData) => {
+    return (
+        <div id="singleView">
+            <QuestionCard
+                data={currentQuestionData['englishQuestion']}
+            />
+            <br />
+            <AnswerCard
+                one={currentQuestionData['englishAnswerChoices'][0]}
+                two={currentQuestionData['englishAnswerChoices'][1]}
+                three={currentQuestionData['englishAnswerChoices'][2]}
+                four={currentQuestionData['englishAnswerChoices'][3]}
+                answer={currentQuestionData['correctAnswer']}
+            />
+        </div>
+    )
+}
+
+let multiViewComponent = (currentQuestionData) => {
+    return (
+        <div id="multiView">
+            <Container>
+                <Row>
+                    <Col><QuestionCard
+                        data={currentQuestionData['englishQuestion']}
+                    />
+                        <br />
+                        <AnswerCard
+                            one={currentQuestionData['englishAnswerChoices'][0]}
+                            two={currentQuestionData['englishAnswerChoices'][1]}
+                            three={currentQuestionData['englishAnswerChoices'][2]}
+                            four={currentQuestionData['englishAnswerChoices'][3]}
+                            answer={currentQuestionData['correctAnswer']}
+
+                        />
+                    </Col>
+                    <Col>
+                        <QuestionCard
+                            data={currentQuestionData['malayalamQuestion']}
+                        />
+                        <br />
+                        <AnswerCard
+                            one={currentQuestionData['malayalamAnswerChoices'][0]}
+                            two={currentQuestionData['malayalamAnswerChoices'][1]}
+                            three={currentQuestionData['malayalamAnswerChoices'][2]}
+                            four={currentQuestionData['malayalamAnswerChoices'][3]}
+                            answer={currentQuestionData['correctAnswer']}
+
+                        />
+                    </Col>
+                </Row>
+            </Container>
+        </div>
+    )
+}
 
 class RegularRoundMaster extends Component {
     constructor(props) {
@@ -19,7 +87,8 @@ class RegularRoundMaster extends Component {
         this.state = {
             answerBulk: [''],
             currentQuestionData: {},
-            currentQuestion: 0
+            currQuestionNumber: 0,
+            totalNumQuestions: 0
         }
 
         this.skip = this.skip.bind(this);
@@ -31,7 +100,6 @@ class RegularRoundMaster extends Component {
         // clearInterval(TimerComponent)
         // this.setState({
         //     timer: 10,
-
         // })
     }
 
@@ -41,13 +109,13 @@ class RegularRoundMaster extends Component {
 
     componentDidMount() {
         console.log("did mount");
-        fetch("http://localhost:5000/api/regularRound/4")
+        console.log(this.props.group);
+        let getLocalItem = JSON.parse(localStorage.getItem(storeName))
+        fetch("http://localhost:5000/api/regularRound/" + getGroup(getLocalItem["group"]))
             .then(response => response.json())
             .then(data => {
-                console.log(data[0])
                 this.setState({
                     answerBulk: data
-
                 })
             })
     }
@@ -55,84 +123,38 @@ class RegularRoundMaster extends Component {
     nextQuestion() {
 
         let currnetData = this.state.answerBulk.pop();
-        console.log(this.state.answerBulk);
-        
         this.setState({
             currentQuestionData: currnetData,
-            currentQuestion: this.state.currentQuestion + 1,
+            currQuestionNumber: this.state.currQuestionNumber + 1,
             answerBulk: this.state.answerBulk
         })
-        if(this.state.answerBulk.length === 0){
-            return(
+        if (this.state.answerBulk.length === 0) {
+            return (
                 <div>
                     hello
                 </div>
             )
         }
+
     }
 
     render() {
 
-        const { currentQuestionData, currentQuestion } = this.state
+        const { currentQuestionData, currQuestionNumber } = this.state
 
         const viewController = () => {
-            if (this.state.currentQuestion === 0) { return "Click Next Question to start" }
-            console.log(this.props.multiView)
+            if (this.state.currQuestionNumber === 0) { return "Click Next Question to start" }
             if (this.props.multiView == true) {
                 return (
-                    <div id="multiView">
-                        <Container>
-                            <Row>
-                                <Col><QuestionCard
-                                    data={currentQuestionData['englishQuestion']}
-                                />
-                                    <br />
-                                    <AnswerCard
-                                        one={currentQuestionData['englishAnswerChoices'][0]}
-                                        two={currentQuestionData['englishAnswerChoices'][1]}
-                                        three={currentQuestionData['englishAnswerChoices'][2]}
-                                        four={currentQuestionData['englishAnswerChoices'][3]}
-                                        answer={currentQuestionData['correctAnswer']}
-
-                                    />
-                                </Col>
-                                <Col>
-                                    <QuestionCard
-                                        data={currentQuestionData['malayalamQuestion']}
-                                    />
-                                    <br />
-                                    <AnswerCard
-
-                                        one={currentQuestionData['malayalamAnswerChoices'][0]}
-                                        two={currentQuestionData['malayalamAnswerChoices'][1]}
-                                        three={currentQuestionData['malayalamAnswerChoices'][2]}
-                                        four={currentQuestionData['malayalamAnswerChoices'][3]}
-                                        answer={currentQuestionData['correctAnswer']}
-
-                                    />
-                                </Col>
-                            </Row>
-                        </Container>
+                    <div>
+                        {multiViewComponent(currentQuestionData)}
                     </div>
                 )
             }
             else {
-                console.log(currentQuestionData['englishAnswerChoices'])
-                console.log(this.state);
-
                 return (
-                    <div id="singleView">
-                        <QuestionCard
-                            data={currentQuestionData['englishQuestion']}
-                        />
-                        <br />
-                        <AnswerCard
-                            one={currentQuestionData['englishAnswerChoices'][0]}
-                            two={currentQuestionData['englishAnswerChoices'][1]}
-                            three={currentQuestionData['englishAnswerChoices'][2]}
-                            four={currentQuestionData['englishAnswerChoices'][3]}
-                            answer={currentQuestionData['correctAnswer']}
-                        />
+                    <div>
+                        {singleViewComponent(currentQuestionData)}
                     </div>
                 )
             }
@@ -143,9 +165,9 @@ class RegularRoundMaster extends Component {
                 {viewController()}
                 <Container>
                     <br />
+                    <small style={{ opacity: this.state.answerBulk.length == 0 ? 1 : 0 }}> This is the last question of the round </small>
                     <Row>
-                        {/* disabled={this.state.answerBulk.length===0} */}
-                        <button id="skipBtn" className="rounded-pill btn-warning"  onClick={this.skip}>Skip</button>
+                        <button id="skipBtn" className="rounded-pill btn-warning" onClick={this.skip}>Skip</button>
                         <button id="viewBtn" className="rounded-pill btn-danger" onClick={this.displayAnswer}>View Answer</button>
                         <button id="nextBtn" className="rounded-pill btn-success" onClick={this.nextQuestion} >Next Question</button>
                     </Row>

@@ -35,8 +35,8 @@ Does it show up on the screen until the question changes.
 Bible Verse / Quotes - 
 
 Are all the questions and answers shown all at once?
-    - Display only the questions toe the partiticiapand and promto thte quiz master
-    - If the part does not answer the qeustion then we display teh qeustion and anser
+    - Display only the questions to the particpand and promo to the quiz master
+    - If the part does not answer the qeustion then we display the qeustion and answer
 
 What are the rules for passing the questions?
 Are all answers displayed all at once?

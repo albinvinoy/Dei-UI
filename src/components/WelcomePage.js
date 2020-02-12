@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import RoundSelector from './RoundSelector'
+import RoundChoose from '../RoundChoose'
 
 let roundSelector = () =>{
 
     return(
-        <RoundSelector />
+        <RoundChoose />
     )
 }
 

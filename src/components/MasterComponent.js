@@ -1,12 +1,20 @@
 import React, { Component } from 'react'
 import RegularRoundMaster from './Master/RegularRoundMaster'
-
+import PictureRoundMaster from './Master/PictureRoundMaster';
 const storeName = "currentRound";
 
 let RegularRoundComponent = (multiView) => {
     return (
         <RegularRoundMaster
             multiView={multiView}
+        />
+    )
+}
+
+let PictureRoundComponent =(multiView) => {
+    return(
+        <PictureRoundMaster
+        multiView={multiView}
         />
     )
 }
@@ -19,16 +27,21 @@ class MasterComponent extends React.PureComponent {
             round: getLocalItem == null ? "" : getLocalItem["round"],
             group: getLocalItem == null ? 0 : getLocalItem["group"]
         }
-        this.localStorageComponentUpdate = this.localStorageComponentUpdate.bind(this);
     }
 
     componentDidMount() {
-        // window.addEventListener('storage', this.localStorageComponentUpdate());
-        window.addEventListener('storage', (StorageEvent)=>{
+        window.addEventListener('storage', (StorageEvent) => {
             console.log("A new change detected in storage");
             console.log(StorageEvent)
-            this.localStorageComponentUpdate(StorageEvent.newValue);
+            // this.localStorageComponentUpdate(StorageEvent.newValue);
+            let getLocalItem = JSON.parse(StorageEvent.newValue);
+            this.setState({
+                round: getLocalItem == null ? "" : getLocalItem["round"],
+                group: getLocalItem == null ? 0 : getLocalItem["group"]
+            })
         })
+
+        // window.open("http://localhost:3000/view")
     }
 
     componentWillUnmount() {
@@ -37,7 +50,7 @@ class MasterComponent extends React.PureComponent {
     }
 
     localStorageComponentUpdate(newValue) {
-        
+
         let getLocalItem = JSON.parse(newValue);
         this.setState({
             round: getLocalItem == null ? "" : getLocalItem["round"],
@@ -46,26 +59,35 @@ class MasterComponent extends React.PureComponent {
     }
 
     render() {
-        const {round, group} = this.state;
-        if(this.state === undefined || round === ""){
+        const { round, group } = this.state;
+        if (this.state === undefined || round === "") {
             return (
                 <div>
                     This is in the round free.
-                   
+
                 </div>
             )
         }
-        else if (group == "adult") {
-            return(
+        else if (round == "regRound") {
+            console.log("Before render Reg Round")
+            return (
                 <div>
-                    {RegularRoundComponent(true)}
+                    {RegularRoundComponent(this.state.group == "adult" ? true : false)}
                 </div>
             )
         }
-        else {
+        else if(round == "picRound"){
+            console.log("Before rende Pic Round")
             return(
                 <div>
-                    {RegularRoundComponent( false)}
+                    {PictureRoundComponent(this.state.group =="adult" ? true : false)}
+                </div>
+            )
+        }
+        else if(round =="quoteRound"){
+            return(
+                <div>
+
                 </div>
             )
         }
