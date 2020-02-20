@@ -33,10 +33,7 @@ var singleViewComponent = (currentQuestionData) => {
             <br />
             <AnswerCard
                 one={currentQuestionData['englishAnswerChoices'][0]}
-                two={currentQuestionData['englishAnswerChoices'][1]}
-                three={currentQuestionData['englishAnswerChoices'][2]}
-                four={currentQuestionData['englishAnswerChoices'][3]}
-                answer={currentQuestionData['correctAnswer']}
+                
             />
         </div>
     )
@@ -53,10 +50,6 @@ let multiViewComponent = (currentQuestionData) => {
                         <br />
                         <AnswerCard
                             one={currentQuestionData['englishAnswerChoices'][0]}
-                            two={currentQuestionData['englishAnswerChoices'][1]}
-                            three={currentQuestionData['englishAnswerChoices'][2]}
-                            four={currentQuestionData['englishAnswerChoices'][3]}
-                            answer={currentQuestionData['correctAnswer']}
 
                         />
                     </Col>
@@ -67,10 +60,6 @@ let multiViewComponent = (currentQuestionData) => {
                         <br />
                         <AnswerCard
                             one={currentQuestionData['malayalamAnswerChoices'][0]}
-                            two={currentQuestionData['malayalamAnswerChoices'][1]}
-                            three={currentQuestionData['malayalamAnswerChoices'][2]}
-                            four={currentQuestionData['malayalamAnswerChoices'][3]}
-                            answer={currentQuestionData['correctAnswer']}
 
                         />
                     </Col>
@@ -128,8 +117,23 @@ class RegularRoundMaster extends Component {
             currQuestionNumber: this.state.currQuestionNumber + 1,
             answerBulk: this.state.answerBulk
         })
+
+
+            let viewSave = {
+                currentQuestion : currnetData['englishQuestion'],
+            currentAnswer : currnetData['englishAnswerChoices'][0],
+            currentQuestionMalayalam : currnetData['malayalamQuestion'],
+            currentAnswerMalayalam : currnetData['malayalamAnswerChoices'][0],
+            currentImage :  "",
+            displayAnswer : false,
+            displayImage: false,
+            multiView : false,
+            prompt : ""
+            }
+            localStorage.setItem("viewSave", JSON.stringify(viewSave));
+    
         if (this.state.answerBulk.length === 0) {
-            return (
+            return(
                 <div>
                     hello
                 </div>
@@ -169,7 +173,10 @@ class RegularRoundMaster extends Component {
                     <Row>
                         <button id="skipBtn" className="rounded-pill btn-warning" onClick={this.skip}>Skip</button>
                         <button id="viewBtn" className="rounded-pill btn-danger" onClick={this.displayAnswer}>View Answer</button>
-                        <button id="nextBtn" className="rounded-pill btn-success" onClick={this.nextQuestion} >Next Question</button>
+                        <Col md={{ span: 4, offset: 10 }}>
+    <button id="nextBtn" className="rounded-pill btn-success" onClick={this.nextQuestion} >Next Question</button>
+
+    </Col>                        
                     </Row>
                 </Container>
             </div>

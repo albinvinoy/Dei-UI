@@ -40,8 +40,6 @@ class MasterComponent extends React.PureComponent {
                 group: getLocalItem == null ? 0 : getLocalItem["group"]
             })
         })
-
-        // window.open("http://localhost:3000/view")
     }
 
     componentWillUnmount() {

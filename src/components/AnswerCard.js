@@ -27,20 +27,9 @@ class AnswerCard extends Component {
                     <Row>
                         <Col>
                             <div id="_1">
-                                <Card.Body className="cardBody" style={{backgroundColor : this.props.answer === 1? "green" : "white"}}>{this.props.one}</Card.Body>
+                                <Card.Body className="cardBody" style={{backgroundColor: "green" }}>{this.props.one}</Card.Body>
                             </div>
                         </Col>
-                        <Col><div id="_2">
-                            <Card.Body className="cardBody"  style={{backgroundColor : this.props.answer === 2? "green" : "white"}}>{this.props.two}</Card.Body>
-                        </div></Col>
-                    </Row>
-                    <Row>
-                        <Col><div id="_3" >
-                            <Card.Body className="cardBody"  style={{backgroundColor : this.props.answer === 3? "green" : "white"}}>{this.props.three}</Card.Body>
-                        </div></Col>
-                        <Col><div id="_4" >
-                            <Card.Body className="cardBody" style={{backgroundColor : this.props.answer === 4? "green" : "white"}}>{this.props.four}</Card.Body>
-                        </div></Col>
                     </Row>
                 </Card>
             </div>
