@@ -16,6 +16,8 @@ let roundSelector = () =>{
             <div>
                 {roundSelector()}
                 <h1>Welcome to Dei Verbum</h1>
+                <p> Here goes some details about the program
+                </p>
             </div>
         )
     }

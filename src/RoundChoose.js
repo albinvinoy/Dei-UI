@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import './styles/RoundChoose.css'
+import Overlay from 'react-bootstrap/Overlay'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Tooltip from 'react-bootstrap/Tooltip'
+import Button from 'react-bootstrap/Button'
+
 class RoundChoose extends React.Component {
     constructor(props) {
         super(props)
@@ -28,24 +33,36 @@ class RoundChoose extends React.Component {
         window.open("http://localhost:3000/master", "_blank")
     }
 
+
     render() {
         return (
             <div>
-            <div onChange={this.setRound.bind(this)}>
-                <input type="radio" value="regRound" name="round" /> Regular Round
+                <div onChange={this.setRound.bind(this)}>
+                    <input type="radio" value="regRound" name="round" /> Regular Round
                 <input type="radio" value="picRound" name="round" /> Picture Round
                 <input type="radio" value="quoteRound" name="round" /> Bible Quotes Round
             </div>
-            < br />
-            <div onChange={this.setGroup.bind(this)}>
-                <input type="radio" value="sub-jr" name="group" /> Sub Junior
+                < br />
+                <div onChange={this.setGroup.bind(this)}>
+                    <input type="radio" value="sub-jr" name="group" /> Sub Junior
                 <input type="radio" value="jr" name="group" /> Junior
                 <input type="radio" value="sr" name="group" /> Senior
                 <input type="radio" value="adult" name="group" /> Adult
             </div>
-            <button id="skipBtn" className="rounded-pill btn-warning" onClick={this.start.bind(this)}>Start Round</button>
-            </div>
+                <div id="button">
 
+                    <OverlayTrigger
+                        placement="right"
+                        delay={{ show: 0, hide: 0 }}
+                        overlay={<Tooltip id={`tooltip-${"right"}`}>
+                            Click here to start new round. This will open a new window.
+                      </Tooltip>}
+                    >
+                        <button id="skipBtn" className="rounded-pill btn-warning" onClick={this.start.bind(this)}>Start Round</button>
+                    </OverlayTrigger>
+                </div>
+
+            </div>
         )
     }
 }
