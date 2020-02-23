@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col'
 import Timer from '../Timer';
 import '../../styles/RegularRoundMaster.css'
 import AnswerCard from '../AnswerCard';
-import { useEffect, useState } from 'react'
+import localStore from '../localStore';
 
 const storeName = "currentRound";
 const TimerComponent = ({ seconds }) => (
@@ -32,8 +32,7 @@ var singleViewComponent = (currentQuestionData) => {
             />
             <br />
             <AnswerCard
-                one={currentQuestionData['englishAnswerChoices'][0]}
-                
+                one={currentQuestionData['enlishAnswer']}
             />
         </div>
     )
@@ -49,7 +48,7 @@ let multiViewComponent = (currentQuestionData) => {
                     />
                         <br />
                         <AnswerCard
-                            one={currentQuestionData['englishAnswerChoices'][0]}
+                            one={currentQuestionData['enlishAnswer']}
 
                         />
                     </Col>
@@ -59,7 +58,7 @@ let multiViewComponent = (currentQuestionData) => {
                         />
                         <br />
                         <AnswerCard
-                            one={currentQuestionData['malayalamAnswerChoices'][0]}
+                            one={currentQuestionData['malayalamAnswer']}
 
                         />
                     </Col>
@@ -94,6 +93,10 @@ class RegularRoundMaster extends Component {
 
     displayAnswer() {
 
+        // create a pop up on the button
+
+        /// update the state so that the answer displays on the view.
+
     }
 
     componentDidMount() {
@@ -118,22 +121,21 @@ class RegularRoundMaster extends Component {
             answerBulk: this.state.answerBulk
         })
 
+        localStore(
+            currnetData['englishQuestion'],
+            currnetData['enlishAnswer'],
+            currnetData['malayalamQuestion'],
+            currnetData['malayalamAnswer'],
+            "",
+            false, // display ans
+            false, // display img
+            false, // multiview
+            "", // english prompt
+            "" // malayalam prompt
+        )        
 
-            let viewSave = {
-                currentQuestion : currnetData['englishQuestion'],
-            currentAnswer : currnetData['englishAnswerChoices'][0],
-            currentQuestionMalayalam : currnetData['malayalamQuestion'],
-            currentAnswerMalayalam : currnetData['malayalamAnswerChoices'][0],
-            currentImage :  "",
-            displayAnswer : false,
-            displayImage: false,
-            multiView : false,
-            prompt : ""
-            }
-            localStorage.setItem("viewSave", JSON.stringify(viewSave));
-    
         if (this.state.answerBulk.length === 0) {
-            return(
+            return (
                 <div>
                     hello
                 </div>
@@ -169,14 +171,31 @@ class RegularRoundMaster extends Component {
                 {viewController()}
                 <Container>
                     <br />
-                    <small style={{ opacity: this.state.answerBulk.length == 0 ? 1 : 0 }}> This is the last question of the round </small>
+                    <small style={{ opacity: this.state.answerBulk.length == 0 ? 1 : 0 }}> This is the last question of the round. Please close this window. </small>
                     <Row>
-                        <button id="skipBtn" className="rounded-pill btn-warning" onClick={this.skip}>Skip</button>
-                        <button id="viewBtn" className="rounded-pill btn-danger" onClick={this.displayAnswer}>View Answer</button>
+                        <div id="skip">
+                            <button id="skipBtn" className="rounded-pill btn-warning" onClick={this.skip}>Skip</button>
+                        </div>
+                        <div id="view">
+                            <button id="viewBtn" className="rounded-pill btn-danger" onClick={this.displayAnswer}>View Answer</button>
+                        </div>
                         <Col md={{ span: 4, offset: 10 }}>
-    <button id="nextBtn" className="rounded-pill btn-success" onClick={this.nextQuestion} >Next Question</button>
+                            <div id="next">
+                            <button id="nextBtn" disabled={this.state.answerBulk.length == 0 ? 1 : 0} className="rounded-pill btn-success" onClick={this.nextQuestion} >Next Question</button>
 
-    </Col>                        
+
+                            {/* <OverlayTrigger
+                        placement="left"
+                        delay={{ show: 0, hide: 0 }}
+                        overlay={<Tooltip id={`tooltip-${"left"}`}>
+                            Next Question
+                      </Tooltip>}
+                    >
+                                <button id="nextBtn" disabled={this.state.answerBulk.length == 0 ? 1 : 0} className="rounded-pill btn-success" onClick={this.nextQuestion} >Next Question</button>
+                    </OverlayTrigger>  */}
+
+                            </div>
+                        </Col>
                     </Row>
                 </Container>
             </div>

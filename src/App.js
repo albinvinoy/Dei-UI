@@ -6,10 +6,11 @@ import MasterComponent from './components/MasterComponent';
 import Rules from './components/Rules';
 import WelcomePage from './components/WelcomePage'
 import PictureRoundMaster from './components/Master/PictureRoundMaster';
-
+import Container from 'react-bootstrap/Container'
 class App extends Component {
   render() {
     return (      
+<Container fluid>
        <BrowserRouter>
             <Switch>
               <Route exact path="/" component={WelcomePage} />
@@ -19,6 +20,7 @@ class App extends Component {
              {/* <Route exact path="/view" component={ViewPage} /> */}
            </Switch>
       </BrowserRouter>
+      </Container>
     );
   }
 }

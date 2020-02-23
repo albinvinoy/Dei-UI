@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './styles/RoundChoose.css'
-import Overlay from 'react-bootstrap/Overlay'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
-import Button from 'react-bootstrap/Button'
 
 class RoundChoose extends React.Component {
     constructor(props) {
