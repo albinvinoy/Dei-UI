@@ -66,3 +66,19 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+-------
+All the buttons should be in one place.
+Display what question and round and group we are on
+have a bigger clock and then have a play and stop 
+View answer will freeze the clock
+Next question will reset the clock to the original time
+
+Remove the stop
+
+Create a new view that contains the view of the rules
+Center all the texts
+
+
+get the view screen done on 

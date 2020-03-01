@@ -7,6 +7,7 @@ import Timer from "../Timer";
 import "../../styles/RegularRoundMaster.css";
 import AnswerCard from "../AnswerCard";
 import localStore from "../localStore";
+import HeaderComponent from "../HeaderComponent";
 
 const storeName = "currentRound";
 const TimerComponent = ({ seconds }) => new Timer(seconds);
@@ -26,8 +27,8 @@ var singleViewComponent = currentQuestionData => {
   return (
     <div id="singleView">
       <QuestionCard data={currentQuestionData["englishQuestion"]} />
-      <br />
-      <AnswerCard one={currentQuestionData["enlishAnswer"]} />
+
+      <AnswerCard data={currentQuestionData["enlishAnswer"]} />
     </div>
   );
 };
@@ -40,12 +41,12 @@ let multiViewComponent = currentQuestionData => {
           <Col>
             <QuestionCard data={currentQuestionData["englishQuestion"]} />
             <br />
-            <AnswerCard one={currentQuestionData["enlishAnswer"]} />
+            <AnswerCard data={currentQuestionData["enlishAnswer"]} />
           </Col>
           <Col>
             <QuestionCard data={currentQuestionData["malayalamQuestion"]} />
             <br />
-            <AnswerCard one={currentQuestionData["malayalamAnswer"]} />
+            <AnswerCard data={currentQuestionData["malayalamAnswer"]} />
           </Col>
         </Row>
       </Container>
@@ -61,7 +62,8 @@ class RegularRoundMaster extends Component {
       answerBulk: [""],
       currentQuestionData: {},
       currQuestionNumber: 0,
-      totalNumQuestions: 0
+      totalNumQuestions: 0,
+      timer: 30
     };
 
     this.skip = this.skip.bind(this);
@@ -70,10 +72,10 @@ class RegularRoundMaster extends Component {
   }
 
   skip() {
-    // clearInterval(TimerComponent)
-    // this.setState({
-    //     timer: 10,
-    // })
+    clearInterval(TimerComponent);
+    this.setState({
+      timer: 10
+    });
   }
 
   displayAnswer() {
@@ -82,8 +84,6 @@ class RegularRoundMaster extends Component {
   }
 
   componentDidMount() {
-    console.log("did mount");
-    console.log(this.props.group);
     let getLocalItem = JSON.parse(localStorage.getItem(storeName));
     fetch(
       "http://localhost:5000/api/regularRound/" +
@@ -102,7 +102,8 @@ class RegularRoundMaster extends Component {
     this.setState({
       currentQuestionData: currnetData,
       currQuestionNumber: this.state.currQuestionNumber + 1,
-      answerBulk: this.state.answerBulk
+      answerBulk: this.state.answerBulk,
+      timer: 30
     });
 
     localStore(
@@ -124,10 +125,9 @@ class RegularRoundMaster extends Component {
   }
 
   render() {
-    const { currentQuestionData, currQuestionNumber } = this.state;
-
-    const viewController = () => {
-      if (this.state.currQuestionNumber === 0) {
+    const { currentQuestionData, currQuestionNumber, timer } = this.state;
+    const setViewComponent = () => {
+      if (currQuestionNumber === 0) {
         return "Click Next Question to start";
       }
       if (this.props.multiView == true) {
@@ -138,47 +138,57 @@ class RegularRoundMaster extends Component {
     };
     return (
       <div>
-        <Timer seconds={this.state.timer} />
-        {viewController()}
-        <Container>
+        <div>
+          <Timer time={timer} />
           <br />
-          <small style={{ opacity: this.state.answerBulk.length == 0 ? 1 : 0 }}>
-            {" "}
-            This is the last question of the round. Please close this window.{" "}
-          </small>
-          <Row>
-            <div id="skip">
-              <button
-                id="skipBtn"
-                className="rounded-pill btn-warning"
-                onClick={this.skip}
-              >
-                Skip
-              </button>
-            </div>
-            <div id="view">
-              <button
-                id="viewBtn"
-                className="rounded-pill btn-danger"
-                onClick={this.displayAnswer}
-              >
-                View Answer
-              </button>
-            </div>
-            <Col md={{ span: 4, offset: 10 }}>
-              <div id="next">
+        </div>
+        <div>
+          <HeaderComponent />
+        </div>
+        <div>{setViewComponent()}</div>
+        <div id="contents">
+          <Container>
+            <br />
+            <small
+              style={{ opacity: this.state.answerBulk.length == 0 ? 1 : 0 }}
+            >
+              {" "}
+              This is the last question of the round. Please close this window.{" "}
+            </small>
+            <Row>
+              <div id="skip">
                 <button
-                  id="nextBtn"
-                  disabled={this.state.answerBulk.length == 0 ? 1 : 0}
-                  className="rounded-pill btn-success"
-                  onClick={this.nextQuestion}
+                  id="skipBtn"
+                  className="rounded-pill btn-warning"
+                  onClick={this.skip}
                 >
-                  Next Question
+                  Pass to next team
                 </button>
               </div>
-            </Col>
-          </Row>
-        </Container>
+              <div id="view">
+                <button
+                  id="viewBtn"
+                  className="rounded-pill btn-danger"
+                  onClick={this.displayAnswer}
+                >
+                  View Answer
+                </button>
+              </div>
+              <Col md={{ span: 4, offset: 10 }}>
+                <div id="next">
+                  <button
+                    id="nextBtn"
+                    disabled={this.state.answerBulk.length == 0 ? 1 : 0}
+                    className="rounded-pill btn-success"
+                    onClick={this.nextQuestion}
+                  >
+                    Next Question
+                  </button>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </div>
       </div>
     );
   }

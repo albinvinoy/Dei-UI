@@ -7,6 +7,8 @@ import Rules from './components/Rules';
 import WelcomePage from './components/WelcomePage'
 import PictureRoundMaster from './components/Master/PictureRoundMaster';
 import Container from 'react-bootstrap/Container'
+
+import ViewMaster from "./components/pages/ViewMaster"
 class App extends Component {
   render() {
     return (      
@@ -17,7 +19,7 @@ class App extends Component {
              <Route exact path='/master' component={MasterComponent}/>
              <Route exact path='/rules' component={Rules}/>
              <Route exact path="/pc" component={PictureRoundMaster} />}
-             {/* <Route exact path="/view" component={ViewPage} /> */}
+             <Route exact path="/view" component={ViewMaster} />
            </Switch>
       </BrowserRouter>
       </Container>

@@ -1,41 +1,28 @@
-import React, { Component } from 'react'
-import Card from 'react-bootstrap/Card'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import '../styles/AnswerCard.css'
+import React, { Component } from "react";
+import Card from "react-bootstrap/Card";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import "../styles/AnswerCard.css";
 
 class AnswerCard extends Component {
-    constructor(props) {
-        super(props)
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            _1: "First Answer",
-            _2: "Second Answer",
-            _3: "Third Answer",
-            _4: "Fourth Answer"
+    this.state = {};
+  }
 
-        }
-    }
-
-    
-
-    render() {
-        
-        return (
-            <div>
-                <Card>
-                    <Row>
-                        <Col>
-                            <div id="_1">
-                                <Card.Body className="cardBody" style={{backgroundColor: "green" }}>{this.props.one}</Card.Body>
-                            </div>
-                        </Col>
-                    </Row>
-                </Card>
-            </div>
-            
-        )
-    }
+  render() {
+    return (
+      <Card border="dark"> 
+        <Card.Body className="cardBody" style={{ backgroundColor: "#D3FAC1", border:12}}>
+          {this.props.data}
+        </Card.Body>
+        {/* <Card.Footer>
+     
+    </Card.Footer> */}
+      </Card>
+    );
+  }
 }
 
-export default AnswerCard
+export default AnswerCard;

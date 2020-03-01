@@ -1,0 +1,10 @@
+{
+    englishQuestion,
+    englishAnswer,
+    englishNotes,
+    malayalamQuestion,
+    malayalamAnswer,
+    malayalamNotes,
+    group,
+    book
+}

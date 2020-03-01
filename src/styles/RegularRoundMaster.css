@@ -1,6 +1,15 @@
 small{
-    color: red;
+    color: rgb(249, 173, 173);
     font-style: italic;
     font-weight: bolder;
 }
 
+#multiView, #singleView{
+
+    /* background-color: rgb(247, 237, 163); */
+}
+
+#contents {
+
+    /* background-color: rgb(19, 108, 216); */
+}

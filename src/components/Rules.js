@@ -5,7 +5,7 @@ class Rules extends Component {
         super(props)
     
         this.state = {
-             
+            
         }
     }
     

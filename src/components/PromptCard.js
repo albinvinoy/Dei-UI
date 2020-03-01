@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
-export class PictureView extends Component {
 
+
+class PromptCard extends Component {
     constructor(props) {
         super(props)
     
@@ -9,7 +10,6 @@ export class PictureView extends Component {
              
         }
     }
-    
     render() {
         return (
             <div>
@@ -19,4 +19,4 @@ export class PictureView extends Component {
     }
 }
 
-export default PictureView
+export default PromptCard

@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import QuestionCard from '../QuestionCard'
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
 
 
 let multiViewComponent = (prompt, viewState) => {
@@ -33,7 +36,7 @@ let singleViewComponent = (promot, viewState) => {
             <br />
             <QuestionCard data={"prompt : " + promot} />
             <br />
-            <QuestionCard data={currentQuestion['englishQuestion']} />
+            <QuestionCard data={'englishQuestion'} />
         </div>
     )
 }

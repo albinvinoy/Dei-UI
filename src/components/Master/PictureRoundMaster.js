@@ -7,6 +7,8 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import QuestionCard from "../QuestionCard";
 import Timer from "../Timer";
+import AnswerCard from "../AnswerCard";
+import HeaderComponent from "../HeaderComponent";
 
 const storeName = "currentRound";
 const getGroup = group => {
@@ -35,26 +37,18 @@ let multiViewComponent = currentQuestion => {
           </Col>
           <Col>
             <QuestionCard
-              // data={currentQuestion['malayalamQuestion']}
               data={currentQuestion["malayalamQuestion"]}
             />
             <br />
           </Col>
         </Row>
-        {/* Answers */}
         <Row>
           <Col>
-            <QuestionCard
-              // data={currentQuestion['englishQuestion']}
-              data={currentQuestion["englishAnswer"]}
-            />
+            <AnswerCard data={currentQuestion["englishAnswer"]} />
             <br />
           </Col>
           <Col>
-            <QuestionCard
-              // data={currentQuestion['malayalamQuestion']}
-              data={currentQuestion["englishAnswer"]}
-            />
+            <AnswerCard data={currentQuestion["malayalamAnswer"]} />
             <br />
           </Col>
         </Row>
@@ -63,14 +57,32 @@ let multiViewComponent = currentQuestion => {
   );
 };
 
-let singleViewComponent = (prompt, currentQuestion) => {
+let singleViewComponent = (prompt, currentQuestion, imgSrc) => {
+  console.log("From view comp " + currentQuestion["englishAnswer"]);
   return (
-    <div id="singleView">
-      <br />
-      <QuestionCard data={"prompt : " + prompt} />
-      <br />
-      <QuestionCard data={currentQuestion["englishQuestion"]} />
-    </div>
+    <Container>
+      <Row>
+        <Col md={6}>
+          <Figure>
+            <Figure.Image
+              src={imgSrc} // TODO: update this
+            />
+            <Figure.Caption> This is the image caption.</Figure.Caption>
+          </Figure>
+        </Col>
+
+        <Col md={6}>
+          <div id="singleView">
+            <br />
+            <QuestionCard data={"prompt : " + prompt} />
+            <br />
+            <QuestionCard data={currentQuestion["englishQuestion"]} />
+            {/* This is not loading */}
+            <AnswerCard data={currentQuestion["englishAnswer"]} />
+          </div>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
@@ -86,7 +98,8 @@ class PictureRoundMaster extends Component {
       currQuestionNumber: -1,
       displayImageSrc: "",
       displayImage: false,
-      currentQuestion: null
+      currentQuestion: null,
+      currentAnswer: null
     };
     this.skip = this.skip.bind(this);
     this.displayAnswer = this.displayAnswer.bind(this);
@@ -118,7 +131,7 @@ class PictureRoundMaster extends Component {
         firstQuestion: item[1],
         secondQuestion: item[2],
         displayImageSrc: item["url"],
-        displayImage: true,
+        displayImage: false,
         currQuestionNumber: this.state.currQuestionNumber + 1
       });
     }
@@ -178,13 +191,25 @@ class PictureRoundMaster extends Component {
     };
 
     const setViewComponent = currentQuestion => {
+      console.log(currentQuestion);
       if (currentQuestion == null || displayImage == true) {
         return <div>Click Next Question to start.</div>;
       }
       if (this.props.multiView == true) {
         return <div>{multiViewComponent(currentQuestion)}</div>;
       } else {
-        return <div>{singleViewComponent(currentQuestion)}</div>;
+        return (
+          <div>
+            {console.log(
+              "This is the question set " + currentQuestion["englishAnswer"]
+            )}
+            {singleViewComponent(
+              "This is prompt",
+              currentQuestion,
+              this.state.displayImageSrc
+            )}
+          </div>
+        );
       }
     };
 
@@ -204,13 +229,13 @@ class PictureRoundMaster extends Component {
       } else {
         return (
           <div>
-            <button
+            {/* <button
               id="skipBtn"
               className="rounded-pill btn-warning"
               onClick={this.skip}
             >
               Skip
-            </button>
+            </button> */}
             <button
               id="viewBtn"
               className="rounded-pill btn-danger"
@@ -241,14 +266,18 @@ class PictureRoundMaster extends Component {
       <div>
         <Timer seconds={this.state.timer} />
         <br />
+        <HeaderComponent />
         {imageComponent(1800, 900)}
-        {setViewComponent(currentQuestion)}
+
+        {setViewComponent(this.state.currentQuestion)}
         <Container>
           <br />
-          <small style={{ opacity: this.state.answerBulk.length == 0 ? 1 : 0 }}>
-            {" "}
-            This is the last question of the round{" "}
-          </small>
+          <small
+              style={{ opacity: this.state.answerBulk.length == 0 ? 1 : 0 }}
+            >
+              {" "}
+              This is the last question of the round. Please close this window.{" "}
+            </small>
           <Row>{dispalyButtons()}</Row>
         </Container>
       </div>
