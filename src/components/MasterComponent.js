@@ -42,6 +42,8 @@ class MasterComponent extends React.PureComponent {
         })
     }
 
+    
+
     componentWillUnmount() {
         window.addEventListener('storage', this.localStorageComponentUpdate());
         localStorage.clear();

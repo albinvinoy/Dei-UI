@@ -12,7 +12,7 @@ class QuestionCard extends Component {
     return (
       <div>
         <Card border="dark">
-          <Card.Body style={{ backgroundColor: "black" }}>
+          <Card.Body style={{ backgroundColor: "white" }}>
             {this.props.data}
           </Card.Body>
         </Card>

@@ -8,6 +8,7 @@ import "../../styles/RegularRoundMaster.css";
 import AnswerCard from "../AnswerCard";
 import localStore from "../localStore";
 import HeaderComponent from "../HeaderComponent";
+import { wait } from "@testing-library/react";
 
 const storeName = "currentRound";
 const TimerComponent = ({ seconds }) => new Timer(seconds);
@@ -81,6 +82,7 @@ class RegularRoundMaster extends Component {
   displayAnswer() {
     // create a pop up on the button
     /// update the state so that the answer displays on the view.
+    localStorage.setItem("displayAnswer", true);
   }
 
   componentDidMount() {
@@ -95,9 +97,15 @@ class RegularRoundMaster extends Component {
           answerBulk: data
         });
       });
+
+    // window.addEventListener("beforeunload", ev => {
+    //   console.log("Closing the browser!!!");
+    //   localStorage.clear();
+    // });
   }
 
   nextQuestion() {
+    localStorage.setItem("displayAnswer", false);
     let currnetData = this.state.answerBulk.pop();
     this.setState({
       currentQuestionData: currnetData,
@@ -156,25 +164,29 @@ class RegularRoundMaster extends Component {
               This is the last question of the round. Please close this window.{" "}
             </small>
             <Row>
-              <div id="skip">
-                <button
-                  id="skipBtn"
-                  className="rounded-pill btn-warning"
-                  onClick={this.skip}
-                >
-                  Pass to next team
-                </button>
-              </div>
-              <div id="view">
-                <button
-                  id="viewBtn"
-                  className="rounded-pill btn-danger"
-                  onClick={this.displayAnswer}
-                >
-                  View Answer
-                </button>
-              </div>
-              <Col md={{ span: 4, offset: 10 }}>
+              <Col md={{offset:1}}>
+                <div id="skip">
+                  <button
+                    id="skipBtn"
+                    className="rounded-pill btn-warning"
+                    onClick={this.skip}
+                  >
+                    Pass to next team
+                  </button>
+                </div>
+              </Col>
+              <Col>
+                <div id="view">
+                  <button
+                    id="viewBtn"
+                    className="rounded-pill btn-danger"
+                    onClick={this.displayAnswer}
+                  >
+                    View Answer
+                  </button>
+                </div>
+              </Col>
+              <Col md={{ offset: 10 }}>
                 <div id="next">
                   <button
                     id="nextBtn"

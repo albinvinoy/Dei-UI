@@ -17,78 +17,57 @@ const storageComponents = {
 };
 
 let regularViewMaster = () => {
-    return (
-        <div>
-            REG ROUND
-        </div>
-    )
-}
+  return (
+    <div>
+      <RegularView />
+    </div>
+  );
+};
 
 let pictureViewMaster = () => {
-    return (
-        <div>
-            PIC ROUND
-        </div>
-    )
-}
+  return <div>PIC ROUND</div>;
+};
 
 let quoteViewMaster = () => {
-    return (
-        <div>
-            QUOTE ROUND
-        </div>
-    )
-}
+  return <div>QUOTE ROUND</div>;
+};
 
 class ViewMaster extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      englishQuestion: null,
-      englishAnswer: null,
-      englishNotes: null,
-      malayalamQuestion: null,
-      malayalamAnswer: null,
-      malayalamNotes: null,
-      group: null,
-      book: null,
-      round: null,
-      url: null
-    };
+    // this.state = {
+    //   // englishQuestion: null,
+    //   // englishAnswer: null,
+    //   // englishNotes: null,
+    //   // malayalamQuestion: null,
+    //   // malayalamAnswer: null,
+    //   // malayalamNotes: null,
+    //   // group: null,
+    //   // book: null,
+    //   // round: null,
+    //   // url: null
+    // };
   }
 
-   componentDidMount() {
-     window.addEventListener("storage", (StorageEvent) => {
-      this.onMountHelper(StorageEvent)
+  componentWillMount() {
+    window.addEventListener("storage", StorageEvent => {
+      this.onMountHelper(StorageEvent);
+      this.setState({});
     });
   }
 
-  onMountHelper = (StorageEvent) =>{
-    console.log(localStorage.getItem("currentRound"));
-    let currentRound = JSON.parse(StorageEvent.newValue);
-    console.log(currentRound);
-
-    if(currentRound != null){
-      
-    let getRound = currentRound["round"];
-    let getGroup = currentRound["group"];
-    console.log(getRound + " -> " + getGroup);
-
-    let currnetData = JSON.parse(localStorage.getItem("currentData"));
-
-    // checking state
-   this.setState({
-      group : getGroup,
-      round : getRound
-    })
-  }
-
-  }
+  onMountHelper = StorageEvent => {
+    let currentRound = JSON.parse(localStorage.getItem("currentRound"));
+    if (currentRound != null) {
+      let getRound = currentRound["round"];
+      let getGroup = currentRound["group"];
+      let currnetData = JSON.parse(localStorage.getItem("currentData"));
+    }
+  };
 
   viewSelector = (group, round) => {
-    
-    if (group === null && round === null) {
+    if (round === null && round === null) {
       return componentEnum.DEFAULT;
     } else if (round === storageComponents.REGULAR) {
       return componentEnum.REGULAR;
@@ -102,53 +81,33 @@ class ViewMaster extends Component {
   };
 
   render() {
-    const {
-      englishQuestion,
-      englishAnswer,
-      englishNotes,
-      malayalamQuestion,
-      malayalamAnswer,
-      malayalamNotes,
-      group,
-      round,
-      url
-    } = this.state;
-
-    let component = this.viewSelector(this.state.group, this.state.round);
-console.log(this.state.group, this.state.round);
-    if(component === componentEnum.DEFAULT){
-        return(
-            <div>
-                DEFAULT from render.
-                <p>{this.state.group, this.state.round}</p>
-            </div>
-        )
-    }
-    else if (component === componentEnum.REGULAR){
-        
+    let roundDetails = localStorage.getItem("currentRound");
+    let currentRound = JSON.parse(localStorage.getItem("currentRound"));
+    if(currentRound == null){
       return(
         <div>
-      {regularViewMaster()}
-
-        </div>
-
-      );
-    }
-    else if (component == componentEnum.PICTURE){
-      return(
-        <div>
-        {pictureViewMaster()}
-
+          <p> Show the template page </p>
         </div>
       )
     }
-    else if (component == componentEnum.QUOTE){
+    console.log(currentRound);
+    let round = currentRound["round"];
+    let group = currentRound["group"];
+    let component = this.viewSelector(group, round);
+    console.log(round + " -> " + group);
+    if (component === componentEnum.DEFAULT) {
       return (
         <div>
-        {quoteViewMaster()}
-
+          DEFAULT from render.
+          {/* <p>{this.state.group, this.state.round}</p> */}
         </div>
-      )
+      );
+    } else if (component === componentEnum.REGULAR) {
+      return <div>{regularViewMaster()}</div>;
+    } else if (component == componentEnum.PICTURE) {
+      return <div>{pictureViewMaster()}</div>;
+    } else if (component == componentEnum.QUOTE) {
+      return <div>{quoteViewMaster()}</div>;
     }
   }
 }
