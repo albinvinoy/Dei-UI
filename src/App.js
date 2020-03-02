@@ -12,7 +12,7 @@ import ViewMaster from "./components/pages/ViewMaster"
 class App extends Component {
   render() {
     return (      
-<Container fluid>
+<Container>
        <BrowserRouter>
             <Switch>
               <Route exact path="/" component={WelcomePage} />

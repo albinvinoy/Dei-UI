@@ -13,14 +13,10 @@ class AnswerCard extends Component {
 
   render() {
     return (
-      <Card border="dark"> 
-        <Card.Body className="cardBody" style={{ backgroundColor: "#D3FAC1", border:12}}>
-          {this.props.data}
-        </Card.Body>
-        {/* <Card.Footer>
-     
-    </Card.Footer> */}
-      </Card>
+      <div id="answerCard">
+        <h4>{this.props.data}</h4>
+      </div>
+    
     );
   }
 }

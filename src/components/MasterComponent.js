@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import RegularRoundMaster from './Master/RegularRoundMaster'
 import PictureRoundMaster from './Master/PictureRoundMaster';
+
 const storeName = "currentRound";
 
 let RegularRoundComponent = (multiView) => {
@@ -41,9 +42,6 @@ class MasterComponent extends React.PureComponent {
             })
         })
     }
-
-    
-
     componentWillUnmount() {
         window.addEventListener('storage', this.localStorageComponentUpdate());
         localStorage.clear();

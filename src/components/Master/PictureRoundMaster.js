@@ -9,15 +9,16 @@ import QuestionCard from "../QuestionCard";
 import Timer from "../Timer";
 import AnswerCard from "../AnswerCard";
 import HeaderComponent from "../HeaderComponent";
+import { ButtonGroup } from "react-bootstrap";
 
 const storeName = "currentRound";
 const getGroup = group => {
   console.log("Master " + group);
   let groupMapper = {
-    adult: 4,
+    "adult": 4,
     "sub-jr": 1,
-    jr: 2,
-    sr: 3
+    "jr": 2,
+    "sr": 3
   };
   return groupMapper[group];
 };
@@ -30,7 +31,6 @@ let multiViewComponent = currentQuestion => {
         <Row>
           <Col>
             <QuestionCard
-              // data={currentQuestion['englishQuestion']}
               data={currentQuestion["englishQuestion"]}
             />
             <br />
@@ -58,7 +58,6 @@ let multiViewComponent = currentQuestion => {
 };
 
 let singleViewComponent = (prompt, currentQuestion, imgSrc) => {
-  console.log("From view comp " + currentQuestion["englishAnswer"]);
   return (
     <Container>
       <Row>
@@ -229,34 +228,42 @@ class PictureRoundMaster extends Component {
       } else {
         return (
           <div>
-            {/* <button
-              id="skipBtn"
-              className="rounded-pill btn-warning"
-              onClick={this.skip}
-            >
-              Skip
-            </button> */}
-            <button
-              id="viewBtn"
-              className="rounded-pill btn-danger"
-              onClick={this.displayAnswer}
-            >
-              View Answer
-            </button>
-            <button
-              id="nextBtn"
-              className="rounded-pill btn-success"
-              onClick={this.nextQuestion}
-            >
-              Next Question
-            </button>
-            <button
-              id="nextBtn"
-              className="rounded-pill"
-              onClick={this.showImage}
-            >
-              Show Image
-            </button>
+            
+        {/* button control here */}
+        <Row>
+          <Col>
+            <ButtonGroup style={{ float: "left" }}>
+              <button
+                id="skipBtn"
+                className="rounded-pill btn-warning"
+                onClick={this.skip}
+              >
+                Pass to next team
+              </button>
+              <button
+                id="viewBtn"
+                className="rounded-pill btn-danger"
+                onClick={this.displayAnswer}
+              >
+                View Answer
+              </button>
+            </ButtonGroup>
+          </Col>
+          <Col>
+            <ButtonGroup style={{ float: "right" }}>
+              <button
+                id="nextBtn"
+                disabled={this.state.answerBulk.length == 0 ? 1 : 0}
+                className="rounded-pill btn-success"
+                onClick={this.nextQuestion}
+              >
+                Next Question
+              </button>
+            </ButtonGroup>
+          </Col>
+        </Row>
+
+
           </div>
         );
       }

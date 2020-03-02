@@ -1,0 +1,15 @@
+h3 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  /* font-size: 24px; */
+  font-style:oblique;
+  font-variant: normal;
+  font-weight: bold;
+  text-align: center;
+  color: rgb(249, 246, 214);
+}
+
+#questionCard{
+    border-style:outset;
+    height: max-content;
+    background-color: rgb(70, 21, 21);
+}

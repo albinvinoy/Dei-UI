@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Card from "react-bootstrap/Card";
+import "../styles/QuestionCard.css"
 
 class QuestionCard extends Component {
   constructor(props) {
@@ -10,12 +11,13 @@ class QuestionCard extends Component {
 
   render() {
     return (
-      <div>
-        <Card border="dark">
-          <Card.Body style={{ backgroundColor: "white" }}>
+      <div id="questionCard">
+        {/* <Card border="dark"> */}
+          {/* <Card.Body style={{ backgroundColor: "white" }}>
             {this.props.data}
-          </Card.Body>
-        </Card>
+          </Card.Body> */}
+          <h3>{this.props.data}</h3>
+        {/* </Card> */}
       </div>
     );
   }

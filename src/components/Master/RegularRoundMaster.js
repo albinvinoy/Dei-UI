@@ -8,7 +8,7 @@ import "../../styles/RegularRoundMaster.css";
 import AnswerCard from "../AnswerCard";
 import localStore from "../localStore";
 import HeaderComponent from "../HeaderComponent";
-import { wait } from "@testing-library/react";
+import { ButtonGroup } from "react-bootstrap";
 
 const storeName = "currentRound";
 const TimerComponent = ({ seconds }) => new Timer(seconds);
@@ -16,10 +16,10 @@ const TimerComponent = ({ seconds }) => new Timer(seconds);
 const getGroup = group => {
   console.log("Master " + group);
   let groupMapper = {
-    adult: 4,
+    "adult": 4,
     "sub-jr": 1,
-    jr: 2,
-    sr: 3
+    "jr": 2,
+    "sr": 3
   };
   return groupMapper[group];
 };
@@ -28,7 +28,7 @@ var singleViewComponent = currentQuestionData => {
   return (
     <div id="singleView">
       <QuestionCard data={currentQuestionData["englishQuestion"]} />
-
+      <br />
       <AnswerCard data={currentQuestionData["enlishAnswer"]} />
     </div>
   );
@@ -163,44 +163,43 @@ class RegularRoundMaster extends Component {
               {" "}
               This is the last question of the round. Please close this window.{" "}
             </small>
-            <Row>
-              <Col md={{offset:1}}>
-                <div id="skip">
-                  <button
-                    id="skipBtn"
-                    className="rounded-pill btn-warning"
-                    onClick={this.skip}
-                  >
-                    Pass to next team
-                  </button>
-                </div>
-              </Col>
-              <Col>
-                <div id="view">
-                  <button
-                    id="viewBtn"
-                    className="rounded-pill btn-danger"
-                    onClick={this.displayAnswer}
-                  >
-                    View Answer
-                  </button>
-                </div>
-              </Col>
-              <Col md={{ offset: 10 }}>
-                <div id="next">
-                  <button
-                    id="nextBtn"
-                    disabled={this.state.answerBulk.length == 0 ? 1 : 0}
-                    className="rounded-pill btn-success"
-                    onClick={this.nextQuestion}
-                  >
-                    Next Question
-                  </button>
-                </div>
-              </Col>
-            </Row>
+            {/* buttons */}
           </Container>
         </div>
+
+        {/* button control here */}
+        <Row>
+          <Col>
+            <ButtonGroup style={{ float: "left" }}>
+              <button
+                id="skipBtn"
+                className="rounded-pill btn-warning"
+                onClick={this.skip}
+              >
+                Pass to next team
+              </button>
+              <button
+                id="viewBtn"
+                className="rounded-pill btn-danger"
+                onClick={this.displayAnswer}
+              >
+                View Answer
+              </button>
+            </ButtonGroup>
+          </Col>
+          <Col>
+            <ButtonGroup style={{ float: "right" }}>
+              <button
+                id="nextBtn"
+                disabled={this.state.answerBulk.length == 0 ? 1 : 0}
+                className="rounded-pill btn-success"
+                onClick={this.nextQuestion}
+              >
+                Next Question
+              </button>
+            </ButtonGroup>
+          </Col>
+        </Row>
       </div>
     );
   }

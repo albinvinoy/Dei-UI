@@ -1,4 +1,4 @@
-radio {
+/* radio {
     position: absolute;
     top: 0;
     left: 0;
@@ -6,4 +6,27 @@ radio {
     width: 25px;
     background-color: #eee;
     border-radius: 50%;
+    color: #eee;
+  } */
+
+  .radio-toolbar input[type="radio"] {
+    display: none;
+  }
+  
+  .radio-toolbar label {
+    display: inline-block;
+    background-color: #ddd;
+    padding: 4px 11px;
+    font-family: Arial;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .radio-toolbar input[type="radio"]:checked+label {
+    background-color: #bbb;
+  }
+
+  p, span{
+    color: #ddd;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
   }
