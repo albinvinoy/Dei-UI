@@ -3,13 +3,17 @@ h3 {
   /* font-size: 24px; */
   font-style:oblique;
   font-variant: normal;
-  font-weight: bold;
+  font-weight: 600;
   text-align: center;
-  color: rgb(249, 246, 214);
+  color: rgb(247, 246, 228);
+
 }
 
 #questionCard{
-    border-style:outset;
-    height: max-content;
+    border-style: groove;
     background-color: rgb(70, 21, 21);
+    border-color: blanchedalmond;
+    /* margin: 40px auto 80px; */
+    padding: 20px;
+    border-radius: 20px;
 }

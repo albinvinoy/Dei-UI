@@ -33,21 +33,21 @@ class RoundChoose extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="roundChoose">
         <Row>
           <div onChange={this.setRound.bind(this)}>
-            <input type="radio" value="regRound" name="round" />{" "}
+            <input type="radio" value="regRound" name="round" />
             <span>Regular Round</span>
-            <input type="radio" value="picRound" name="round" />{" "}
+            <input type="radio" value="picRound" name="round" />
             <span>Picture Round</span>
-            <input type="radio" value="quoteRound" name="round" />{" "}
+            <input type="radio" value="quoteRound" name="round" />
             <span>Bible Quotes</span>
           </div>
         </Row>
         <span />
         <Row>
           <div onChange={this.setGroup.bind(this)}>
-            <input type="radio" value="sub-jr" name="group" />{" "}
+            <input type="radio" value="sub-jr" name="group" />
             <span> Sub Junior</span>
             <input type="radio" value="jr" name="group" /> <span> Junior</span>
             <input type="radio" value="sr" name="group" /> <span>Senior </span>

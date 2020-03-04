@@ -12,7 +12,8 @@ import ViewMaster from "./components/pages/ViewMaster"
 class App extends Component {
   render() {
     return (      
-<Container>
+
+<div className="container-fluid">
        <BrowserRouter>
             <Switch>
               <Route exact path="/" component={WelcomePage} />
@@ -22,7 +23,7 @@ class App extends Component {
              <Route exact path="/view" component={ViewMaster} />
            </Switch>
       </BrowserRouter>
-      </Container>
+      </div>
     );
   }
 }

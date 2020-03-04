@@ -11,8 +11,8 @@ class Notes extends Component {
     }
     render() {
         return (
-            <div>
-                
+            <div id="notesDiv">
+                <p id="notes">{this.props.data}</p>
             </div>
         )
     }

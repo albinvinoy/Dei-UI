@@ -1,14 +1,15 @@
 html, body {
     position: relative;
     width: 100%;
-    background: #111;
-    overflow: hidden;
+    /* background: #111; */
+    /* overflow: hidden; */
     background-size: cover;
     background-position: center center;
-    z-index: .5;
  }
  
  html, body {
-    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/demo-bg.jpg");
+background:url(https://www.transparenttextures.com/patterns/arches.png) repeat, -moz-linear-gradient(top,  #f2a38b 0%, #4096ee 100%); /* FF3.6-15 */
+background:url(https://www.transparenttextures.com/patterns/arches.png) repeat, linear-gradient(to bottom,  #f2a38b 0%,#4096ee 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+height:100vh;
+
  }
- 

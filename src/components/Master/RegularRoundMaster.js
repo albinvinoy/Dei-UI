@@ -9,6 +9,7 @@ import AnswerCard from "../AnswerCard";
 import localStore from "../localStore";
 import HeaderComponent from "../HeaderComponent";
 import { ButtonGroup } from "react-bootstrap";
+import Notes from "../Notes";
 
 const storeName = "currentRound";
 const TimerComponent = ({ seconds }) => new Timer(seconds);
@@ -30,6 +31,8 @@ var singleViewComponent = currentQuestionData => {
       <QuestionCard data={currentQuestionData["englishQuestion"]} />
       <br />
       <AnswerCard data={currentQuestionData["enlishAnswer"]} />
+      <br />
+      <Notes data={currentQuestionData["englishPrompt"]} />
     </div>
   );
 };
@@ -37,17 +40,21 @@ var singleViewComponent = currentQuestionData => {
 let multiViewComponent = currentQuestionData => {
   return (
     <div id="multiView">
-      <Container>
+      <Container fluid={true}>
         <Row>
           <Col>
             <QuestionCard data={currentQuestionData["englishQuestion"]} />
             <br />
             <AnswerCard data={currentQuestionData["enlishAnswer"]} />
+            <br />
+            <Notes data={currentQuestionData["englishPrompt"]} />
           </Col>
           <Col>
             <QuestionCard data={currentQuestionData["malayalamQuestion"]} />
             <br />
             <AnswerCard data={currentQuestionData["malayalamAnswer"]} />
+            < br />
+            <Notes data={currentQuestionData["malayalamPrompt"]} />
           </Col>
         </Row>
       </Container>

@@ -26,7 +26,7 @@ const getGroup = group => {
 let multiViewComponent = currentQuestion => {
   return (
     <div id="multiView">
-      <Container>
+      <div className="container-fluid">
         {/* Questions */}
         <Row>
           <Col>
@@ -52,14 +52,14 @@ let multiViewComponent = currentQuestion => {
             <br />
           </Col>
         </Row>
-      </Container>
+      </div>
     </div>
   );
 };
 
 let singleViewComponent = (prompt, currentQuestion, imgSrc) => {
   return (
-    <Container>
+    <div className="container-fluid">
       <Row>
         <Col md={6}>
           <Figure>
@@ -81,7 +81,7 @@ let singleViewComponent = (prompt, currentQuestion, imgSrc) => {
           </div>
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 };
 
