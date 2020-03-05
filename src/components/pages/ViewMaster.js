@@ -29,7 +29,11 @@ let pictureViewMaster = () => {
 };
 
 let quoteViewMaster = () => {
-  return <div>QUOTE ROUND</div>;
+  return (
+    <div>
+      <RegularView />
+    </div>
+  );
 };
 
 class ViewMaster extends Component {
@@ -83,12 +87,12 @@ class ViewMaster extends Component {
   render() {
     let roundDetails = localStorage.getItem("currentRound");
     let currentRound = JSON.parse(localStorage.getItem("currentRound"));
-    if(currentRound == null){
-      return(
+    if (currentRound == null) {
+      return (
         <div>
           <p> Show the template page </p>
         </div>
-      )
+      );
     }
     console.log(currentRound);
     let round = currentRound["round"];

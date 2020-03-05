@@ -81,21 +81,21 @@ class Timer extends Component {
         <span />
         <Container>
           <Row>
-            <Col md={1}>
+            <Col >
               <button
                 onClick={this.startTimer}
                 id="startButton"
                 className="rounded-pill btn-warning"
               >
-                >>
+                <h1> >> </h1>
               </button>
             </Col>
-            <Col>
+            <Col style={{float:"left"}}>
               <div className="timer">
-                <h2 id="clock"> {this.state.currentSeconds} </h2>
+                <h1 id="clock"> {this.state.currentSeconds} </h1>
               </div>
             </Col>
-            <Col md={1}>
+            {/* <Col style={{ span: 2, offset: 0 }}>
               <button
                 onClick={this.stopTimer}
                 id="stopButton"
@@ -103,16 +103,16 @@ class Timer extends Component {
               >
                 ||
               </button>
-            </Col>
+            </Col> */}
           </Row>
         </Container>
         <span />
 
-        <ProgressBar
+        {/* <ProgressBar
           animated
           variant={this.state.variant}
           now={this.state.barPercentage}
-        />
+        /> */}
       </div>
     );
   }

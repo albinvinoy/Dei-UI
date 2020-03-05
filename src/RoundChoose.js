@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./styles/RoundChoose.css";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, ButtonGroup } from "react-bootstrap";
 
 class RoundChoose extends React.Component {
   constructor(props) {
@@ -34,39 +34,28 @@ class RoundChoose extends React.Component {
   render() {
     return (
       <div id="roundChoose">
+        <br />
         <Row>
-          <div onChange={this.setRound.bind(this)}>
-            <input type="radio" value="regRound" name="round" />
-            <span>Regular Round</span>
-            <input type="radio" value="picRound" name="round" />
-            <span>Picture Round</span>
-            <input type="radio" value="quoteRound" name="round" />
-            <span>Bible Quotes</span>
-          </div>
-        </Row>
-        <span />
-        <Row>
-          <div onChange={this.setGroup.bind(this)}>
-            <input type="radio" value="sub-jr" name="group" />
-            <span> Sub Junior</span>
-            <input type="radio" value="jr" name="group" /> <span> Junior</span>
-            <input type="radio" value="sr" name="group" /> <span>Senior </span>
-            <input type="radio" value="adult" name="group" /> <span>Adult</span>
-          </div>
-        </Row>
-        <span />
-        <Row >
+          <Col>
+          <ButtonGroup vertical >
+              <button className="btn-primary btn-block" value="regRound" name="round" onClick={this.setRound.bind(this)}>Regular Round</button>
+              <button className="btn-primary btn-block" value="picRound" name="round" onClick={this.setRound.bind(this)}>Picture Round</button>
+              <button className="btn-primary btn-block" value="quoteRound" name="round" onClick={this.setRound.bind(this)}>Bible Quotes Round</button>
+            </ButtonGroup>
+          
+          </Col>
+
+          <Col>
+          <ButtonGroup vertical>
+          <button className="btn-primary btn-block" value="sub-jr" name="group" onClick={this.setGroup.bind(this)}>Sub Junior</button>
+              <button className="btn-primary btn-block" value="jr" name="group" onClick={this.setGroup.bind(this)}>Junior</button>
+              <button className="btn-primary btn-block" value="sr" name="group" onClick={this.setGroup.bind(this)}>Senior Round</button>
+              <button className="btn-primary btn-block" value="adult" name="group" onClick={this.setGroup.bind(this)}>Adult</button>
+          </ButtonGroup>
+          </Col>
+    
 
         <div id="button">
-          <OverlayTrigger
-            placement="right"
-            delay={{ show: 0, hide: 0 }}
-            overlay={
-              <Tooltip id={`tooltip-${"right"}`}>
-                Click here to start new round. This will open a new window.
-              </Tooltip>
-            }
-          >
             <button
               id="skipBtn"
               className="rounded-pill btn-warning"
@@ -74,7 +63,6 @@ class RoundChoose extends React.Component {
             >
               Start Round
             </button>
-          </OverlayTrigger>
         </div>
         </Row>
       </div>

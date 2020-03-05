@@ -10,3 +10,13 @@
 .container{
     justify-content: start;
 }
+
+#clock{
+    font-weight: bolder;
+    font-size: 5rem;
+    
+}
+
+#timer{
+    align-content: center;
+}

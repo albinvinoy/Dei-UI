@@ -62,7 +62,7 @@ let multiViewComponent = currentQuestionData => {
   );
 };
 
-class RegularRoundMaster extends Component {
+class QuoteRoundMaster extends Component {
   constructor(props) {
     super(props);
 
@@ -179,13 +179,6 @@ class RegularRoundMaster extends Component {
           <Col>
             <ButtonGroup style={{ float: "left" }}>
               <button
-                id="skipBtn"
-                className="rounded-pill btn-info"
-                onClick={this.skip}
-              >
-                <h4>Pass to next team</h4>
-              </button>
-              <button
                 id="viewBtn"
                 className="rounded-pill btn-danger"
                 onClick={this.displayAnswer}
@@ -212,4 +205,4 @@ class RegularRoundMaster extends Component {
   }
 }
 
-export default RegularRoundMaster;
+export default QuoteRoundMaster;

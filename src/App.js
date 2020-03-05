@@ -1,31 +1,30 @@
-import React, { Component } from 'react'
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import MasterComponent from './components/MasterComponent';
-import Rules from './components/Rules';
-import WelcomePage from './components/WelcomePage'
-import PictureRoundMaster from './components/Master/PictureRoundMaster';
-import Container from 'react-bootstrap/Container'
+import React, { Component } from "react";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import MasterComponent from "./components/MasterComponent";
+import Rules from "./components/Rules";
+import WelcomePage from "./components/WelcomePage";
+import PictureRoundMaster from "./components/Master/PictureRoundMaster";
+import Container from "react-bootstrap/Container";
 
-import ViewMaster from "./components/pages/ViewMaster"
+import ViewMaster from "./components/pages/ViewMaster";
 class App extends Component {
   render() {
-    return (      
-
-<div className="container-fluid">
-       <BrowserRouter>
-            <Switch>
-              <Route exact path="/" component={WelcomePage} />
-             <Route exact path='/master' component={MasterComponent}/>
-             <Route exact path='/rules' component={Rules}/>
-             <Route exact path="/pc" component={PictureRoundMaster} />}
-             <Route exact path="/view" component={ViewMaster} />
-           </Switch>
-      </BrowserRouter>
+    return (
+      <div className="container-fluid">
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={WelcomePage} />
+            <Route exact path="/master" component={MasterComponent} />
+            <Route exact path="/rules" component={Rules} />
+            <Route exact path="/pc" component={PictureRoundMaster} />}
+            <Route exact path="/view" component={ViewMaster} />
+          </Switch>
+        </BrowserRouter>
       </div>
     );
   }
 }
- 
+
 export default App;

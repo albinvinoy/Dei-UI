@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import RegularRoundMaster from './Master/RegularRoundMaster'
 import PictureRoundMaster from './Master/PictureRoundMaster';
+import QuoteRoundMaster from "./Master/QuoteRoundMaster";
 
 const storeName = "currentRound";
 
@@ -15,6 +16,14 @@ let RegularRoundComponent = (multiView) => {
 let PictureRoundComponent =(multiView) => {
     return(
         <PictureRoundMaster
+        multiView={multiView}
+        />
+    )
+}
+
+let QuoteRoundComponent =(multiView) =>{
+    return(
+        <QuoteRoundMaster
         multiView={multiView}
         />
     )
@@ -85,7 +94,7 @@ class MasterComponent extends React.PureComponent {
         else if(round =="quoteRound"){
             return(
                 <div>
-
+                     {QuoteRoundComponent(this.state.group == "adult" ? true : false)}
                 </div>
             )
         }

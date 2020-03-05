@@ -5,40 +5,35 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import AnswerCard from "../AnswerCard";
 
-let multiViewComponent = ( state) => {
-  
+let multiViewComponent = state => {
   let showAnswer = JSON.parse(localStorage.getItem("displayAnswer"));
-  if(showAnswer){
+  if (showAnswer) {
     return (
       <div id="multiView">
-        <Container>
+        <Container fluid={true}>
           <Row>
             <Col>
-            <QuestionCard data={state["englishQuestion"]} />
-        <AnswerCard data={state["englishAnswer"]} />
+              <QuestionCard data={state["englishQuestion"]} />
+              <AnswerCard data={state["englishAnswer"]} />
             </Col>
             <Col>
-            <QuestionCard data={state["malayalamQuestion"]} />
-        <AnswerCard data={state["malayalamAnswer"]} />
+              <QuestionCard data={state["malayalamQuestion"]} />
+              <AnswerCard data={state["malayalamAnswer"]} />
             </Col>
           </Row>
         </Container>
       </div>
     );
-  }
-  else{
+  } else {
     return (
-
       <div id="multiView">
-        <Container>
+        <Container fluid={true}>
           <Row>
             <Col>
-            <QuestionCard data={state["englishQuestion"]} />
-
+              <QuestionCard data={state["englishQuestion"]} />
             </Col>
             <Col>
-            <QuestionCard data={state["malayalamQuestion"]} />
-
+              <QuestionCard data={state["malayalamQuestion"]} />
             </Col>
           </Row>
         </Container>
@@ -66,7 +61,6 @@ let singleViewComponent = state => {
     );
   }
 };
-
 
 class RegularView extends Component {
   constructor(props) {
@@ -116,12 +110,11 @@ class RegularView extends Component {
     if (localData == null) {
       return <div>This should show the rules.</div>;
     }
-    
+
     if (currentRound["group"] === "adult") {
       return <div>{multiViewComponent(this.state)}</div>;
-    }
-    else{
-    return <div>{singleViewComponent(this.state)}</div>
+    } else {
+      return <div>{singleViewComponent(this.state)}</div>;
     }
   }
 }

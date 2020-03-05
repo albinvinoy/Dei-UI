@@ -15,10 +15,10 @@ const storeName = "currentRound";
 const getGroup = group => {
   console.log("Master " + group);
   let groupMapper = {
-    "adult": 4,
+    adult: 4,
     "sub-jr": 1,
-    "jr": 2,
-    "sr": 3
+    jr: 2,
+    sr: 3
   };
   return groupMapper[group];
 };
@@ -30,15 +30,11 @@ let multiViewComponent = currentQuestion => {
         {/* Questions */}
         <Row>
           <Col>
-            <QuestionCard
-              data={currentQuestion["englishQuestion"]}
-            />
+            <QuestionCard data={currentQuestion["englishQuestion"]} />
             <br />
           </Col>
           <Col>
-            <QuestionCard
-              data={currentQuestion["malayalamQuestion"]}
-            />
+            <QuestionCard data={currentQuestion["malayalamQuestion"]} />
             <br />
           </Col>
         </Row>
@@ -169,6 +165,10 @@ class PictureRoundMaster extends Component {
           answerBulk: data
         });
       });
+    window.addEventListener("beforeunload", ev => {
+      console.log("Closing the browser!!!");
+      localStorage.clear();
+    });
   }
 
   render() {
@@ -218,52 +218,49 @@ class PictureRoundMaster extends Component {
           <div>
             <button
               id="skipBtn"
-              className="rounded-pill btn-warning"
+              className="rounded-pill btn-info"
               onClick={this.hideImage}
             >
-              Hide Image
+              <h4>Hide image from audience</h4>
             </button>
           </div>
         );
       } else {
         return (
           <div>
-            
-        {/* button control here */}
-        <Row>
-          <Col>
-            <ButtonGroup style={{ float: "left" }}>
-              <button
-                id="skipBtn"
-                className="rounded-pill btn-warning"
-                onClick={this.skip}
-              >
-                Pass to next team
-              </button>
-              <button
-                id="viewBtn"
-                className="rounded-pill btn-danger"
-                onClick={this.displayAnswer}
-              >
-                View Answer
-              </button>
-            </ButtonGroup>
-          </Col>
-          <Col>
-            <ButtonGroup style={{ float: "right" }}>
-              <button
-                id="nextBtn"
-                disabled={this.state.answerBulk.length == 0 ? 1 : 0}
-                className="rounded-pill btn-success"
-                onClick={this.nextQuestion}
-              >
-                Next Question
-              </button>
-            </ButtonGroup>
-          </Col>
-        </Row>
-
-
+            {/* button control here */}
+            <Row>
+              <Col>
+                <ButtonGroup>
+                  <button
+                    id="viewBtn"
+                    className="rounded-pill btn-danger"
+                    onClick={this.displayAnswer}
+                  >
+                    <h4>View Answer to audience</h4>
+                  </button>
+                  <button
+                    id="nextBtn"
+                    className="rounded-pill btn-info"
+                    onClick={this.showImage}
+                  >
+                    <h4>Display image to audience</h4>
+                  </button>
+                </ButtonGroup>
+              </Col>
+              <Col>
+                <ButtonGroup style={{ float: "right" }}>
+                  <button
+                    id="nextBtn"
+                    disabled={this.state.answerBulk.length == 0 ? 1 : 0}
+                    className="rounded-pill btn-success"
+                    onClick={this.nextQuestion}
+                  >
+                    <h4>Next Question</h4>
+                  </button>
+                </ButtonGroup>
+              </Col>
+            </Row>
           </div>
         );
       }
@@ -273,20 +270,17 @@ class PictureRoundMaster extends Component {
       <div>
         <Timer seconds={this.state.timer} />
         <br />
-        <HeaderComponent />
+
         {imageComponent(1800, 900)}
 
         {setViewComponent(this.state.currentQuestion)}
-        <Container>
-          <br />
-          <small
-              style={{ opacity: this.state.answerBulk.length == 0 ? 1 : 0 }}
-            >
-              {" "}
-              This is the last question of the round. Please close this window.{" "}
-            </small>
-          <Row>{dispalyButtons()}</Row>
-        </Container>
+
+        <br />
+        <small style={{ opacity: this.state.answerBulk.length == 0 ? 1 : 0 }}>
+          {" "}
+          This is the last question of the round. Please close this window.{" "}
+        </small>
+        {dispalyButtons()}
       </div>
     );
   }
