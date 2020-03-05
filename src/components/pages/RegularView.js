@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import AnswerCard from "../AnswerCard";
+import RegularRound from "../Rules/RegularRound";
 
 let multiViewComponent = state => {
   let showAnswer = JSON.parse(localStorage.getItem("displayAnswer"));
@@ -14,13 +15,20 @@ let multiViewComponent = state => {
           <Row>
             <Col>
               <QuestionCard data={state["englishQuestion"]} />
-              <AnswerCard data={state["englishAnswer"]} />
             </Col>
             <Col>
               <QuestionCard data={state["malayalamQuestion"]} />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <AnswerCard data={state["englishAnswer"]} />
+            </Col>
+            <Col>
               <AnswerCard data={state["malayalamAnswer"]} />
             </Col>
           </Row>
+
         </Container>
       </div>
     );
@@ -108,7 +116,7 @@ class RegularView extends Component {
     let localData = localStorage.getItem("viewSave");
     let currentRound = JSON.parse(localStorage.getItem("currentRound"));
     if (localData == null) {
-      return <div>This should show the rules.</div>;
+      return (<div><RegularRound /></div>);
     }
 
     if (currentRound["group"] === "adult") {

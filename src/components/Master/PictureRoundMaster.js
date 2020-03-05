@@ -10,6 +10,7 @@ import Timer from "../Timer";
 import AnswerCard from "../AnswerCard";
 import HeaderComponent from "../HeaderComponent";
 import { ButtonGroup } from "react-bootstrap";
+import Notes from "../Notes";
 
 const storeName = "currentRound";
 const getGroup = group => {
@@ -23,29 +24,58 @@ const getGroup = group => {
   return groupMapper[group];
 };
 
-let multiViewComponent = currentQuestion => {
+let multiViewComponent = (currentQuestion, imgSrc) => {
   return (
     <div id="multiView">
       <div className="container-fluid">
-        {/* Questions */}
         <Row>
-          <Col>
-            <QuestionCard data={currentQuestion["englishQuestion"]} />
-            <br />
+          <Col md={6}>
+            <Figure>
+              <Figure.Image
+                src={imgSrc} // TODO: update this
+              />
+              <Figure.Caption> This is the image caption.</Figure.Caption>
+            </Figure>
           </Col>
-          <Col>
-            <QuestionCard data={currentQuestion["malayalamQuestion"]} />
-            <br />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <AnswerCard data={currentQuestion["englishAnswer"]} />
-            <br />
-          </Col>
-          <Col>
-            <AnswerCard data={currentQuestion["malayalamAnswer"]} />
-            <br />
+
+          <Col md={6}>
+            <div id="singleView">
+              <Col>
+                {/* english */}
+                <QuestionCard
+                  data={
+                    currentQuestion["englishQuestion"] +
+                    "Nulla aute id occaecat veniam ex enim dolor pariatur Lorem."
+                  }
+                />
+                {/* This is not loading */}
+                <AnswerCard
+                  data={
+                    currentQuestion["englishAnswer"] +
+                    " Dolor consectetur quis laboris nostrud eu est veniam sint."
+                  }
+                />
+                <br />
+                <Notes
+                  data={
+                    " Culpa velit elit in est cillum aliqua irure. Occaecat sunt voluptate qui ea proident anim do adipisicing. Reprehenderit ut nisi ea minim. Voluptate incididunt nulla ad sit eu occaecat. Et aliquip consequat deserunt anim eu ut eu esse. Pariatur sint non labore ad sint culpa enim culpa. Enim amet occaecat dolor incididunt in veniam laboris."
+                  }
+                />
+              </Col>
+              <br />
+              <Col>
+                {/* malayalam */}
+                <QuestionCard data={currentQuestion["malayalamQuestion"]} />
+                {/* This is not loading */}
+                <AnswerCard data={currentQuestion["malayalamAnswer"]} />
+                <br />
+                <Notes
+                  data={
+                    " Culpa velit elit in est cillum aliqua irure. Occaecat sunt voluptate qui ea proident anim do adipisicing. Reprehenderit ut nisi ea minim. Voluptate incididunt nulla ad sit eu occaecat. Et aliquip consequat deserunt anim eu ut eu esse. Pariatur sint non labore ad sint culpa enim culpa. Enim amet occaecat dolor incididunt in veniam laboris."
+                  }
+                />
+              </Col>
+            </div>
           </Col>
         </Row>
       </div>
@@ -68,12 +98,15 @@ let singleViewComponent = (prompt, currentQuestion, imgSrc) => {
 
         <Col md={6}>
           <div id="singleView">
-            <br />
-            <QuestionCard data={"prompt : " + prompt} />
-            <br />
             <QuestionCard data={currentQuestion["englishQuestion"]} />
             {/* This is not loading */}
             <AnswerCard data={currentQuestion["englishAnswer"]} />
+            <br />
+            <Notes
+              data={
+                " Culpa velit elit in est cillum aliqua irure. Occaecat sunt voluptate qui ea proident anim do adipisicing. Reprehenderit ut nisi ea minim. Voluptate incididunt nulla ad sit eu occaecat. Et aliquip consequat deserunt anim eu ut eu esse. Pariatur sint non labore ad sint culpa enim culpa. Enim amet occaecat dolor incididunt in veniam laboris."
+              }
+            />
           </div>
         </Col>
       </Row>
@@ -195,7 +228,11 @@ class PictureRoundMaster extends Component {
         return <div>Click Next Question to start.</div>;
       }
       if (this.props.multiView == true) {
-        return <div>{multiViewComponent(currentQuestion)}</div>;
+        return (
+          <div>
+            {multiViewComponent(currentQuestion, this.state.displayImageSrc)}
+          </div>
+        );
       } else {
         return (
           <div>

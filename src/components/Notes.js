@@ -12,7 +12,7 @@ class Notes extends Component {
     render() {
         return (
             <div id="notesDiv">
-                <p id="notes">{this.props.data}</p>
+                <p id="notes">Notes: {this.props.data}</p>
             </div>
         )
     }

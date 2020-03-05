@@ -16,7 +16,7 @@ class QuestionCard extends Component {
           {/* <Card.Body style={{ backgroundColor: "white" }}>
             {this.props.data}
           </Card.Body> */}
-          <h3>{this.props.data}</h3>
+          <h3>Q: {this.props.data}</h3>
         {/* </Card> */}
       </div>
     );

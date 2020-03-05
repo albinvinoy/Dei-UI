@@ -10,6 +10,7 @@ import localStore from "../localStore";
 import HeaderComponent from "../HeaderComponent";
 import { ButtonGroup } from "react-bootstrap";
 import Notes from "../Notes";
+import RegularRound from "../Rules/RegularRound";
 
 const storeName = "currentRound";
 const TimerComponent = ({ seconds }) => new Timer(seconds);
@@ -29,7 +30,6 @@ var singleViewComponent = currentQuestionData => {
   return (
     <div id="singleView">
       <QuestionCard data={currentQuestionData["englishQuestion"]} />
-      <br />
       <AnswerCard data={currentQuestionData["enlishAnswer"]} />
       <br />
       <Notes data={currentQuestionData["englishPrompt"]} />
@@ -44,14 +44,12 @@ let multiViewComponent = currentQuestionData => {
         <Row>
           <Col>
             <QuestionCard data={currentQuestionData["englishQuestion"]} />
-            <br />
             <AnswerCard data={currentQuestionData["enlishAnswer"]} />
             <br />
             <Notes data={currentQuestionData["englishPrompt"]} />
           </Col>
           <Col>
             <QuestionCard data={currentQuestionData["malayalamQuestion"]} />
-            <br />
             <AnswerCard data={currentQuestionData["malayalamAnswer"]} />
             < br />
             <Notes data={currentQuestionData["malayalamPrompt"]} />
@@ -143,7 +141,11 @@ class RegularRoundMaster extends Component {
     const { currentQuestionData, currQuestionNumber, timer } = this.state;
     const setViewComponent = () => {
       if (currQuestionNumber === 0) {
-        return "Click Next Question to start";
+        return (
+          <div>
+            <RegularRound />
+          </div>
+        );
       }
       if (this.props.multiView == true) {
         return <div>{multiViewComponent(currentQuestionData)}</div>;
@@ -167,7 +169,6 @@ class RegularRoundMaster extends Component {
             <small
               style={{ opacity: this.state.answerBulk.length == 0 ? 1 : 0 }}
             >
-              {" "}
               This is the last question of the round. Please close this window.{" "}
             </small>
             {/* buttons */}

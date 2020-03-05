@@ -29,7 +29,6 @@ var singleViewComponent = currentQuestionData => {
   return (
     <div id="singleView">
       <QuestionCard data={currentQuestionData["englishQuestion"]} />
-      <br />
       <AnswerCard data={currentQuestionData["enlishAnswer"]} />
       <br />
       <Notes data={currentQuestionData["englishPrompt"]} />
@@ -44,14 +43,12 @@ let multiViewComponent = currentQuestionData => {
         <Row>
           <Col>
             <QuestionCard data={currentQuestionData["englishQuestion"]} />
-            <br />
             <AnswerCard data={currentQuestionData["enlishAnswer"]} />
             <br />
             <Notes data={currentQuestionData["englishPrompt"]} />
           </Col>
           <Col>
             <QuestionCard data={currentQuestionData["malayalamQuestion"]} />
-            <br />
             <AnswerCard data={currentQuestionData["malayalamAnswer"]} />
             < br />
             <Notes data={currentQuestionData["malayalamPrompt"]} />
@@ -167,7 +164,6 @@ class QuoteRoundMaster extends Component {
             <small
               style={{ opacity: this.state.answerBulk.length == 0 ? 1 : 0 }}
             >
-              {" "}
               This is the last question of the round. Please close this window.{" "}
             </small>
             {/* buttons */}

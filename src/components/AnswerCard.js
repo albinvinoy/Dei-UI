@@ -13,7 +13,7 @@ class AnswerCard extends Component {
   render() {
     return (
       <div id="answerCard" className="w3-panel w3-border w3-round-xlarge">
-        <h4>{this.props.data}</h4>
+        <h4>A: {this.props.data}</h4>
       </div>
     );
   }

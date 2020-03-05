@@ -87,7 +87,7 @@ class Timer extends Component {
                 id="startButton"
                 className="rounded-pill btn-warning"
               >
-                <h1> >> </h1>
+                <h1> Start </h1>
               </button>
             </Col>
             <Col style={{float:"left"}}>
