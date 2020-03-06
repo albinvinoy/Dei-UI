@@ -1,0 +1,15 @@
+#viewTemplateHeader{
+    animation-name: title;
+    /* animation-delay: 10s; */
+    animation: typing 1.5s steps(30, end)
+}
+
+#viewTemplateIntro{
+    animation-name: details;
+    animation-delay: 15s;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}

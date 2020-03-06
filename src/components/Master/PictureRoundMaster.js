@@ -11,15 +11,16 @@ import AnswerCard from "../AnswerCard";
 import HeaderComponent from "../HeaderComponent";
 import { ButtonGroup } from "react-bootstrap";
 import Notes from "../Notes";
+import PictureRound from "../Rules/PictureRound"
 
 const storeName = "currentRound";
 const getGroup = group => {
   console.log("Master " + group);
   let groupMapper = {
-    adult: 4,
+    "adult": 4,
     "sub-jr": 1,
-    jr: 2,
-    sr: 3
+    "jr": 2,
+    "sr": 3
   };
   return groupMapper[group];
 };
@@ -55,7 +56,6 @@ let multiViewComponent = (currentQuestion, imgSrc) => {
                     " Dolor consectetur quis laboris nostrud eu est veniam sint."
                   }
                 />
-                <br />
                 <Notes
                   data={
                     " Culpa velit elit in est cillum aliqua irure. Occaecat sunt voluptate qui ea proident anim do adipisicing. Reprehenderit ut nisi ea minim. Voluptate incididunt nulla ad sit eu occaecat. Et aliquip consequat deserunt anim eu ut eu esse. Pariatur sint non labore ad sint culpa enim culpa. Enim amet occaecat dolor incididunt in veniam laboris."
@@ -68,7 +68,7 @@ let multiViewComponent = (currentQuestion, imgSrc) => {
                 <QuestionCard data={currentQuestion["malayalamQuestion"]} />
                 {/* This is not loading */}
                 <AnswerCard data={currentQuestion["malayalamAnswer"]} />
-                <br />
+                     < br />
                 <Notes
                   data={
                     " Culpa velit elit in est cillum aliqua irure. Occaecat sunt voluptate qui ea proident anim do adipisicing. Reprehenderit ut nisi ea minim. Voluptate incididunt nulla ad sit eu occaecat. Et aliquip consequat deserunt anim eu ut eu esse. Pariatur sint non labore ad sint culpa enim culpa. Enim amet occaecat dolor incididunt in veniam laboris."
@@ -101,12 +101,12 @@ let singleViewComponent = (prompt, currentQuestion, imgSrc) => {
             <QuestionCard data={currentQuestion["englishQuestion"]} />
             {/* This is not loading */}
             <AnswerCard data={currentQuestion["englishAnswer"]} />
-            <br />
+            < br />
             <Notes
-              data={
-                " Culpa velit elit in est cillum aliqua irure. Occaecat sunt voluptate qui ea proident anim do adipisicing. Reprehenderit ut nisi ea minim. Voluptate incididunt nulla ad sit eu occaecat. Et aliquip consequat deserunt anim eu ut eu esse. Pariatur sint non labore ad sint culpa enim culpa. Enim amet occaecat dolor incididunt in veniam laboris."
-              }
-            />
+                  data={
+                    " Culpa velit elit in est cillum aliqua irure. Occaecat sunt voluptate qui ea proident anim do adipisicing. Reprehenderit ut nisi ea minim. Voluptate incididunt nulla ad sit eu occaecat. Et aliquip consequat deserunt anim eu ut eu esse. Pariatur sint non labore ad sint culpa enim culpa. Enim amet occaecat dolor incididunt in veniam laboris."
+                  }
+                  />
           </div>
         </Col>
       </Row>
@@ -225,7 +225,11 @@ class PictureRoundMaster extends Component {
     const setViewComponent = currentQuestion => {
       console.log(currentQuestion);
       if (currentQuestion == null || displayImage == true) {
-        return <div>Click Next Question to start.</div>;
+        return (
+          <div>
+            <PictureRound />
+          </div>
+        );
       }
       if (this.props.multiView == true) {
         return (

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import RegularView from "./RegularView";
 import QuotesView from "./QuotesView";
+import TemplateView from "./TemplateView"
 
 const componentEnum = {
   DEFAULT: "DEFAULT",
@@ -90,7 +91,7 @@ class ViewMaster extends Component {
     if (currentRound == null) {
       return (
         <div>
-          <p> Show the template page </p>
+          <TemplateView />
         </div>
       );
     }
