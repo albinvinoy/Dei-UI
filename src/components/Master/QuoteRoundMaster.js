@@ -164,11 +164,12 @@ class QuoteRoundMaster extends Component {
         <div id="contents">
           <Container>
             <br />
-            <small
+            <p
               style={{ opacity: this.state.answerBulk.length == 0 ? 1 : 0 }}
+              id="completedView"
             >
               This is the last question of the round. Please close this window.{" "}
-            </small>
+            </p>
             {/* buttons */}
           </Container>
         </div>

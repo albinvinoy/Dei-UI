@@ -11,18 +11,18 @@ import AnswerCard from "../AnswerCard";
 import HeaderComponent from "../HeaderComponent";
 import { ButtonGroup } from "react-bootstrap";
 import Notes from "../Notes";
-import PictureRound from "../Rules/PictureRound"
+import PictureRound from "../Rules/PictureRound";
 import HeaderView from "../pages/HeaderView";
-import "../../styles/PictureRoundMaster.css"
+import "../../styles/PictureRoundMaster.css";
 
 const storeName = "currentRound";
 const getGroup = group => {
   console.log("Master " + group);
   let groupMapper = {
-    "adult": 4,
+    adult: 4,
     "sub-jr": 1,
-    "jr": 2,
-    "sr": 3
+    jr: 2,
+    sr: 3
   };
   return groupMapper[group];
 };
@@ -70,7 +70,7 @@ let multiViewComponent = (currentQuestion, imgSrc) => {
                 <QuestionCard data={currentQuestion["malayalamQuestion"]} />
                 {/* This is not loading */}
                 <AnswerCard data={currentQuestion["malayalamAnswer"]} />
-                     < br />
+                <br />
                 <Notes
                   data={
                     " Culpa velit elit in est cillum aliqua irure. Occaecat sunt voluptate qui ea proident anim do adipisicing. Reprehenderit ut nisi ea minim. Voluptate incididunt nulla ad sit eu occaecat. Et aliquip consequat deserunt anim eu ut eu esse. Pariatur sint non labore ad sint culpa enim culpa. Enim amet occaecat dolor incididunt in veniam laboris."
@@ -103,12 +103,12 @@ let singleViewComponent = (prompt, currentQuestion, imgSrc) => {
             <QuestionCard data={currentQuestion["englishQuestion"]} />
             {/* This is not loading */}
             <AnswerCard data={currentQuestion["englishAnswer"]} />
-            < br />
+            <br />
             <Notes
-                  data={
-                    " Culpa velit elit in est cillum aliqua irure. Occaecat sunt voluptate qui ea proident anim do adipisicing. Reprehenderit ut nisi ea minim. Voluptate incididunt nulla ad sit eu occaecat. Et aliquip consequat deserunt anim eu ut eu esse. Pariatur sint non labore ad sint culpa enim culpa. Enim amet occaecat dolor incididunt in veniam laboris."
-                  }
-                  />
+              data={
+                " Culpa velit elit in est cillum aliqua irure. Occaecat sunt voluptate qui ea proident anim do adipisicing. Reprehenderit ut nisi ea minim. Voluptate incididunt nulla ad sit eu occaecat. Et aliquip consequat deserunt anim eu ut eu esse. Pariatur sint non labore ad sint culpa enim culpa. Enim amet occaecat dolor incididunt in veniam laboris."
+              }
+            />
           </div>
         </Col>
       </Row>
@@ -150,6 +150,7 @@ class PictureRoundMaster extends Component {
 
   displayAnswer() {}
   // temp solution-> async and await to put the setState on top of the call stack.
+  // Issue : last question's second question is not shown
   async nextQuestion() {
     if (
       this.state.answerBulk.length != 0 &&
@@ -297,7 +298,6 @@ class PictureRoundMaster extends Component {
                   disabled={this.state.answerBulk.length == 0 ? 1 : 0}
                   className="rounded-pill btn-success"
                   onClick={this.nextQuestion}
-                
                 >
                   <h4>NEXT QUESTION</h4>
                 </button>
@@ -317,8 +317,10 @@ class PictureRoundMaster extends Component {
         {setViewComponent(this.state.currentQuestion)}
 
         <br />
-        <p style={{ opacity: this.state.answerBulk.length == 0 ? 1 : 0 }}
-          id = "completedView">
+        <p
+          style={{ opacity: this.state.answerBulk.length == 0 ? 1 : 0 }}
+          id="completedView"
+        >
           This is the last question of the round. Please close this window.{" "}
         </p>
         {dispalyButtons()}
