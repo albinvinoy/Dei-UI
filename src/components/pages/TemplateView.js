@@ -6,9 +6,12 @@ export class TemplateView extends Component {
     render() {
         return (
           <div id="welcome">
+            <br />
             <Container>
-             <h2 id="viewTemplateHeader">Welcome to Dei Verbum 2020</h2>
-             <br />
+              <h2 id="viewTemplateHeader">Welcome to Dei Verbum 2020</h2>
+              <br />
+              <h3 style={{color:"black"}}>Please while we set up the round</h3>
+              <br />
               <p id="viewTemplateIntro">
                 {" "}
                 Tempor cillum elit tempor excepteur eu consectetur amet dolor.

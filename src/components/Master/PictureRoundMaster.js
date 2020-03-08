@@ -12,6 +12,7 @@ import HeaderComponent from "../HeaderComponent";
 import { ButtonGroup } from "react-bootstrap";
 import Notes from "../Notes";
 import PictureRound from "../Rules/PictureRound"
+import HeaderView from "../pages/HeaderView";
 
 const storeName = "currentRound";
 const getGroup = group => {
@@ -278,14 +279,14 @@ class PictureRoundMaster extends Component {
                     className="rounded-pill btn-danger"
                     onClick={this.displayAnswer}
                   >
-                    <h4>View Answer to audience</h4>
+                    <h4>SHOW ANSWER TO AUDIENCE</h4>
                   </button>
                   <button
                     id="nextBtn"
                     className="rounded-pill btn-info"
                     onClick={this.showImage}
                   >
-                    <h4>Display image to audience</h4>
+                    <h4>DISPLAY IMAGE TO AUDIENCE</h4>
                   </button>
                 </ButtonGroup>
               </Col>
@@ -297,7 +298,7 @@ class PictureRoundMaster extends Component {
                     className="rounded-pill btn-success"
                     onClick={this.nextQuestion}
                   >
-                    <h4>Next Question</h4>
+                    <h4>NEXT QUESTION</h4>
                   </button>
                 </ButtonGroup>
               </Col>
@@ -311,7 +312,6 @@ class PictureRoundMaster extends Component {
       <div>
         <Timer seconds={this.state.timer} />
         <br />
-
         {imageComponent(1800, 900)}
 
         {setViewComponent(this.state.currentQuestion)}

@@ -34,3 +34,23 @@
   #roundChoose{
     font-size: xx-large;
   }
+
+  #startBtn{
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    color: #ffffff;
+    background-color: #28A745;
+    font-weight: 700;
+  }
+
+  #group{
+     background-color: #428bca;
+     font-weight: 700;
+     color: #ffffff;
+  }
+
+  #round{
+         background-color: #d9534f;
+     font-weight: 700;
+     color: #ffffff;
+  }

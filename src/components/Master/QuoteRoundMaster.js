@@ -7,7 +7,7 @@ import Timer from "../Timer";
 import "../../styles/RegularRoundMaster.css";
 import AnswerCard from "../AnswerCard";
 import localStore from "../localStore";
-import HeaderComponent from "../HeaderComponent";
+import HeaderView from "../pages/HeaderView";
 import { ButtonGroup } from "react-bootstrap";
 import Notes from "../Notes";
 
@@ -154,9 +154,6 @@ class QuoteRoundMaster extends Component {
           <Timer time={timer} />
           <br />
         </div>
-        <div>
-          <HeaderComponent />
-        </div>
         <div>{setViewComponent()}</div>
         <div id="contents">
           <Container>
@@ -179,7 +176,7 @@ class QuoteRoundMaster extends Component {
                 className="rounded-pill btn-danger"
                 onClick={this.displayAnswer}
               >
-                 <h4>View Answer to audience</h4>
+                <h4>SHOW ANSWER TO AUDIENCE</h4>
               </button>
             </ButtonGroup>
           </Col>
@@ -191,7 +188,7 @@ class QuoteRoundMaster extends Component {
                 className="rounded-pill btn-success"
                 onClick={this.nextQuestion}
               >
-                <h4>Next Question</h4>
+                <h4>NEXT QUESTION</h4>
               </button>
             </ButtonGroup>
           </Col>

@@ -11,6 +11,7 @@ import HeaderComponent from "../HeaderComponent";
 import { ButtonGroup } from "react-bootstrap";
 import Notes from "../Notes";
 import RegularRound from "../Rules/RegularRound";
+import HeaderView from "../pages/HeaderView";
 
 const storeName = "currentRound";
 const TimerComponent = ({ seconds }) => new Timer(seconds);
@@ -159,9 +160,7 @@ class RegularRoundMaster extends Component {
           <Timer time={timer} />
           <br />
         </div>
-        <div>
-          <HeaderComponent />
-        </div>
+
         <div>{setViewComponent()}</div>
         <div id="contents">
           <Container>
@@ -171,41 +170,40 @@ class RegularRoundMaster extends Component {
             >
               This is the last question of the round. Please close this window.{" "}
             </small>
-            {/* buttons */}
           </Container>
         </div>
 
         {/* button control here */}
         <Row>
-          <Col>
-            <ButtonGroup style={{ float: "left" }}>
-              <button
-                id="skipBtn"
-                className="rounded-pill btn-info"
-                onClick={this.skip}
-              >
-                <h4>Pass to next team</h4>
-              </button>
-              <button
-                id="viewBtn"
-                className="rounded-pill btn-danger"
-                onClick={this.displayAnswer}
-              >
-                 <h4>View Answer to audience</h4>
-              </button>
-            </ButtonGroup>
+          <Col id="regButtons">
+            <button
+              id="skipBtn"
+              className="rounded-pill btn-info"
+              onClick={this.skip}
+            >
+              <span> </span>
+              <h4>PASS TO NEXT TEAM</h4>
+            </button>
           </Col>
-          <Col>
-            <ButtonGroup style={{ float: "right" }}>
-              <button
-                id="nextBtn"
-                disabled={this.state.answerBulk.length == 0 ? 1 : 0}
-                className="rounded-pill btn-success"
-                onClick={this.nextQuestion}
-              >
-                <h4>Next Question</h4>
-              </button>
-            </ButtonGroup>
+          <Col id="regButtons">
+            <button
+              id="viewBtn"
+              className="rounded-pill btn-danger"
+              onClick={this.displayAnswer}
+            >
+              <h4>SHOW ANSWER TO AUDIENCE</h4>
+            </button>
+          </Col>
+          <Col id="regButtons">
+            <button
+              id="nextBtn"
+              disabled={this.state.answerBulk.length == 0 ? 1 : 0}
+              className="rounded-pill btn-success"
+              onClick={this.nextQuestion}
+              style={{ float: "right" }}
+            >
+              <h4>NEXT QUESTION</h4>
+            </button>
           </Col>
         </Row>
       </div>

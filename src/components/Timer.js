@@ -4,6 +4,7 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import HeaderView from "./pages/HeaderView";
 
 class Timer extends Component {
   constructor(props) {
@@ -79,9 +80,10 @@ class Timer extends Component {
     return (
       <div>
         <span />
-        <Container>
+        <br />
+        <Container fluid>
           <Row>
-            <Col >
+            <Col id="startCol">
               <button
                 onClick={this.startTimer}
                 id="startButton"
@@ -90,20 +92,16 @@ class Timer extends Component {
                 <h1> Start </h1>
               </button>
             </Col>
-            <Col style={{float:"left"}}>
+            <Col>
               <div className="timer">
                 <h1 id="clock"> {this.state.currentSeconds} </h1>
               </div>
             </Col>
-            {/* <Col style={{ span: 2, offset: 0 }}>
-              <button
-                onClick={this.stopTimer}
-                id="stopButton"
-                className="rounded-pill btn-danger"
-              >
-                ||
-              </button>
-            </Col> */}
+            <Col>
+              <div>
+                <HeaderView />
+              </div>
+            </Col>
           </Row>
         </Container>
         <span />

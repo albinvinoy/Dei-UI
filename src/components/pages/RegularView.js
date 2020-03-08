@@ -5,6 +5,8 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import AnswerCard from "../AnswerCard";
 import RegularRound from "../Rules/RegularRound";
+import HeaderView from "./HeaderView";
+import Timer from "../Timer";
 
 let multiViewComponent = state => {
   let showAnswer = JSON.parse(localStorage.getItem("displayAnswer"));
@@ -28,7 +30,6 @@ let multiViewComponent = state => {
               <AnswerCard data={state["malayalamAnswer"]} />
             </Col>
           </Row>
-
         </Container>
       </div>
     );
@@ -115,15 +116,34 @@ class RegularView extends Component {
   render() {
     let localData = localStorage.getItem("viewSave");
     let currentRound = JSON.parse(localStorage.getItem("currentRound"));
-    if (localData == null) {
-      return (<div><RegularRound /></div>);
-    }
 
-    if (currentRound["group"] === "adult") {
-      return <div>{multiViewComponent(this.state)}</div>;
-    } else {
-      return <div>{singleViewComponent(this.state)}</div>;
-    }
+    const setComponentView = () => {
+      if (localData == null) {
+        return (
+          <div>
+            <RegularRound />
+          </div>
+        );
+      }
+
+      if (currentRound["group"] === "adult") {
+        return <div>{multiViewComponent(this.state)}</div>;
+      } else {
+        return <div>{singleViewComponent(this.state)}</div>;
+      }
+    };
+
+
+    return (
+      <div>
+        <div>
+          <Timer time={30} />
+          <br />
+        </div>
+        
+        <div>{setComponentView()}</div>
+      </div>
+    );
   }
 }
 

@@ -11,7 +11,8 @@ h3 {
 
 #questionCard{
     border-style: groove;
-    background-color: rgb(5, 82, 150);
+    /* background-color: rgb(5, 82, 150); */
+    background-color: #4A8BEE;
     border-color: blanchedalmond;
     /* margin: 40px auto 80px; */
     padding: 20px;

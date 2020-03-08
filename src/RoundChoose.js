@@ -37,33 +37,87 @@ class RoundChoose extends React.Component {
         <br />
         <Row>
           <Col>
-          <ButtonGroup vertical >
-              <button className="btn-primary btn-block" value="regRound" name="round" onClick={this.setRound.bind(this)}>Regular Round</button>
-              <button className="btn-primary btn-block" value="picRound" name="round" onClick={this.setRound.bind(this)}>Picture Round</button>
-              <button className="btn-primary btn-block" value="quoteRound" name="round" onClick={this.setRound.bind(this)}>Bible Quotes Round</button>
+            <ButtonGroup vertical>
+              <button
+                className="btn-block"
+                value="regRound"
+                name="round"
+                id="round"
+                onClick={this.setRound.bind(this)}
+              >
+                Regular Round
+              </button>
+              <button
+                className="btn-block"
+                value="picRound"
+                name="round"
+                id="round"
+                onClick={this.setRound.bind(this)}
+              >
+                Picture Round
+              </button>
+              <button
+                className="btn-block"
+                value="quoteRound"
+                name="round"
+                id="round"
+                onClick={this.setRound.bind(this)}
+              >
+                Bible Quotes Round
+              </button>
             </ButtonGroup>
-          
           </Col>
 
           <Col>
-          <ButtonGroup vertical>
-          <button className="btn-primary btn-block" value="sub-jr" name="group" onClick={this.setGroup.bind(this)}>Sub Junior</button>
-              <button className="btn-primary btn-block" value="jr" name="group" onClick={this.setGroup.bind(this)}>Junior</button>
-              <button className="btn-primary btn-block" value="sr" name="group" onClick={this.setGroup.bind(this)}>Senior Round</button>
-              <button className="btn-primary btn-block" value="adult" name="group" onClick={this.setGroup.bind(this)}>Adult</button>
-          </ButtonGroup>
+            <ButtonGroup vertical>
+              <button
+                className=" btn-block"
+                value="sub-jr"
+                name="group"
+                id="group"
+                onClick={this.setGroup.bind(this)}
+              >
+                Sub Junior
+              </button>
+              <button
+                className=" btn-block"
+                value="jr"
+                name="group"
+                id="group"
+                onClick={this.setGroup.bind(this)}
+              >
+                Junior
+              </button>
+              <button
+                className=" btn-block"
+                value="sr"
+                name="group"
+                id="group"
+                onClick={this.setGroup.bind(this)}
+              >
+                Senior Round
+              </button>
+              <button
+                className=" btn-block"
+                value="adult"
+                name="group"
+                id="group"
+                onClick={this.setGroup.bind(this)}
+              >
+                Adult
+              </button>
+            </ButtonGroup>
           </Col>
-    
 
-        <div id="button">
+          <div id="button">
             <button
-              id="skipBtn"
-              className="rounded-pill btn-warning"
+              id="startBtn"
+              className="btn-block"
               onClick={this.start.bind(this)}
             >
-              Start Round
+              Start
             </button>
-        </div>
+          </div>
         </Row>
       </div>
     );

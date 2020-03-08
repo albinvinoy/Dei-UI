@@ -14,6 +14,7 @@ class WelcomePage extends Component {
       <div id="welcome">
         
         <Container>
+          <br />
         <h2>Welcome to Dei Verbum</h2>
         <p id="rules">1. Choose a round.</p>
         <p id="rules"> 2. Choose a group.</p>

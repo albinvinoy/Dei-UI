@@ -20,3 +20,9 @@
 #timer{
     align-content: center;
 }
+
+#startCol{
+    justify-content: center;
+    align-content: center;
+    display: flex;
+}
