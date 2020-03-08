@@ -13,6 +13,7 @@ import { ButtonGroup } from "react-bootstrap";
 import Notes from "../Notes";
 import PictureRound from "../Rules/PictureRound"
 import HeaderView from "../pages/HeaderView";
+import "../../styles/PictureRoundMaster.css"
 
 const storeName = "currentRound";
 const getGroup = group => {
@@ -272,35 +273,34 @@ class PictureRoundMaster extends Component {
           <div>
             {/* button control here */}
             <Row>
-              <Col>
-                <ButtonGroup>
-                  <button
-                    id="viewBtn"
-                    className="rounded-pill btn-danger"
-                    onClick={this.displayAnswer}
-                  >
-                    <h4>SHOW ANSWER TO AUDIENCE</h4>
-                  </button>
-                  <button
-                    id="nextBtn"
-                    className="rounded-pill btn-info"
-                    onClick={this.showImage}
-                  >
-                    <h4>DISPLAY IMAGE TO AUDIENCE</h4>
-                  </button>
-                </ButtonGroup>
+              <Col id="picButtons">
+                <button
+                  id="viewBtn"
+                  className="rounded-pill btn-danger"
+                  onClick={this.displayAnswer}
+                >
+                  <h4>SHOW ANSWER TO AUDIENCE</h4>
+                </button>
               </Col>
-              <Col>
-                <ButtonGroup style={{ float: "right" }}>
-                  <button
-                    id="nextBtn"
-                    disabled={this.state.answerBulk.length == 0 ? 1 : 0}
-                    className="rounded-pill btn-success"
-                    onClick={this.nextQuestion}
-                  >
-                    <h4>NEXT QUESTION</h4>
-                  </button>
-                </ButtonGroup>
+              <Col id="picButtons">
+                <button
+                  id="showBtn"
+                  className="rounded-pill btn-info"
+                  onClick={this.showImage}
+                >
+                  <h4>DISPLAY IMAGE TO AUDIENCE</h4>
+                </button>
+              </Col>
+              <Col id="picButtons">
+                <button
+                  id="nextBtn"
+                  disabled={this.state.answerBulk.length == 0 ? 1 : 0}
+                  className="rounded-pill btn-success"
+                  onClick={this.nextQuestion}
+                
+                >
+                  <h4>NEXT QUESTION</h4>
+                </button>
               </Col>
             </Row>
           </div>
@@ -317,10 +317,10 @@ class PictureRoundMaster extends Component {
         {setViewComponent(this.state.currentQuestion)}
 
         <br />
-        <small style={{ opacity: this.state.answerBulk.length == 0 ? 1 : 0 }}>
-          {" "}
+        <p style={{ opacity: this.state.answerBulk.length == 0 ? 1 : 0 }}
+          id = "completedView">
           This is the last question of the round. Please close this window.{" "}
-        </small>
+        </p>
         {dispalyButtons()}
       </div>
     );

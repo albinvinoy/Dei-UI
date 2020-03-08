@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import AnswerCard from "../AnswerCard";
+import QuoteRound from "../Rules/QuoteRound";
 
 let multiViewComponent = state => {
   let showAnswer = JSON.parse(localStorage.getItem("displayAnswer"));
@@ -114,7 +115,7 @@ class QuotesView extends Component {
     let localData = localStorage.getItem("viewSave");
     let currentRound = JSON.parse(localStorage.getItem("currentRound"));
     if (localData == null) {
-      return <div>This should show the rules.</div>;
+      return (<div><QuoteRound /></div>);
     }
 
     if (currentRound["group"] === "adult") {

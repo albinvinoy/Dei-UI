@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Container from "react-bootstrap/Container";
+
 
 export class QuoteRound extends Component {
     
@@ -19,6 +21,6 @@ export class QuoteRound extends Component {
         );
     }
 }
-}
+
 
 export default QuoteRound

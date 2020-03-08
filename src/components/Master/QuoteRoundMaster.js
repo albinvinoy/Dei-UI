@@ -10,6 +10,8 @@ import localStore from "../localStore";
 import HeaderView from "../pages/HeaderView";
 import { ButtonGroup } from "react-bootstrap";
 import Notes from "../Notes";
+import "../../styles/QuoteRoundMaster.css"
+import QuoteRound from "../Rules/QuoteRound";
 
 const storeName = "currentRound";
 const TimerComponent = ({ seconds }) => new Timer(seconds);
@@ -140,7 +142,11 @@ class QuoteRoundMaster extends Component {
     const { currentQuestionData, currQuestionNumber, timer } = this.state;
     const setViewComponent = () => {
       if (currQuestionNumber === 0) {
-        return "Click Next Question to start";
+        return (
+          <div>
+            <QuoteRound />
+          </div>
+        );
       }
       if (this.props.multiView == true) {
         return <div>{multiViewComponent(currentQuestionData)}</div>;
@@ -169,28 +175,24 @@ class QuoteRoundMaster extends Component {
 
         {/* button control here */}
         <Row>
-          <Col>
-            <ButtonGroup style={{ float: "left" }}>
-              <button
-                id="viewBtn"
-                className="rounded-pill btn-danger"
-                onClick={this.displayAnswer}
-              >
-                <h4>SHOW ANSWER TO AUDIENCE</h4>
-              </button>
-            </ButtonGroup>
+          <Col id="quoteButtons">
+            <button
+              id="viewBtn"
+              className="rounded-pill btn-danger"
+              onClick={this.displayAnswer}
+            >
+              <h4>SHOW ANSWER TO AUDIENCE</h4>
+            </button>
           </Col>
-          <Col>
-            <ButtonGroup style={{ float: "right" }}>
-              <button
-                id="nextBtn"
-                disabled={this.state.answerBulk.length == 0 ? 1 : 0}
-                className="rounded-pill btn-success"
-                onClick={this.nextQuestion}
-              >
-                <h4>NEXT QUESTION</h4>
-              </button>
-            </ButtonGroup>
+          <Col id="quoteButtons">
+            <button
+              id="nextBtn"
+              disabled={this.state.answerBulk.length == 0 ? 1 : 0}
+              className="rounded-pill btn-success"
+              onClick={this.nextQuestion}
+            >
+              <h4>NEXT QUESTION</h4>
+            </button>
           </Col>
         </Row>
       </div>

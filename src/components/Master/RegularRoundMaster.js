@@ -19,10 +19,10 @@ const TimerComponent = ({ seconds }) => new Timer(seconds);
 const getGroup = group => {
   console.log("Master " + group);
   let groupMapper = {
-    "adult": 4,
+    adult: 4,
     "sub-jr": 1,
-    "jr": 2,
-    "sr": 3
+    jr: 2,
+    sr: 3
   };
   return groupMapper[group];
 };
@@ -52,7 +52,7 @@ let multiViewComponent = currentQuestionData => {
           <Col>
             <QuestionCard data={currentQuestionData["malayalamQuestion"]} />
             <AnswerCard data={currentQuestionData["malayalamAnswer"]} />
-            < br />
+            <br />
             <Notes data={currentQuestionData["malayalamPrompt"]} />
           </Col>
         </Row>
@@ -165,11 +165,12 @@ class RegularRoundMaster extends Component {
         <div id="contents">
           <Container>
             <br />
-            <small
+            <p
+              id="completedView"
               style={{ opacity: this.state.answerBulk.length == 0 ? 1 : 0 }}
             >
               This is the last question of the round. Please close this window.{" "}
-            </small>
+            </p>
           </Container>
         </div>
 
@@ -181,7 +182,6 @@ class RegularRoundMaster extends Component {
               className="rounded-pill btn-info"
               onClick={this.skip}
             >
-              <span> </span>
               <h4>PASS TO NEXT TEAM</h4>
             </button>
           </Col>
@@ -200,7 +200,6 @@ class RegularRoundMaster extends Component {
               disabled={this.state.answerBulk.length == 0 ? 1 : 0}
               className="rounded-pill btn-success"
               onClick={this.nextQuestion}
-              style={{ float: "right" }}
             >
               <h4>NEXT QUESTION</h4>
             </button>

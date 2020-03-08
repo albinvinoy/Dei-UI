@@ -4,17 +4,15 @@
     font-weight: bolder;
 }
 
-#skipBtn, #viewBtn, #nextBtn{
+ #viewBtn, #nextBtn{
     padding-top: 1em;
     padding-left: 1.5em;
     padding-right: 1.5em;
     padding-bottom: 1em;
     text-align: center;
-    /* justify-content: center;
-    display: flex; */
 }
 
-#regButtons{
+#quoteButtons{
     justify-content: center;
     display: flex;
 }
